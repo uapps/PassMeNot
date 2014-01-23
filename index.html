@@ -3,37 +3,65 @@
 <head>
 <meta charset="utf-8">
 <title>Pass Me Not</title>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
 <script type="text/javascript" src="js/angular.min.js"></script>
 <script type="text/javascript" src="js/app.js"></script>
 </head>
 <body>
-    <div ng-controller="Controller">
-        <form name="addSubject" ng-submit="add()" novalidate>
-            <input type="text" placeholder="Module Name" ng-model="subject.name" required />
-            <input type="number" placeholder="CA Percentage" ng-model="subject.caPercent" min="0" max="99" required  />
-            <input type="number" placeholder="CA Mark" ng-model="subject.caMark" min="0" max="100" required />
-            <button type="submit">Add Subject</button>
-        </form>
-        <table border="1">
-            <tr>
-                <th>Name</th>
-                <th>CA%</th>
-                <th>CA Mark</th>
-                <th>40%</th>
-                <th>55%</th>
-                <th>70%</th>
-                <th></th>
-            </tr>
-            <tr ng-repeat="subject in subjects">
-                <td>{{subject.name}}</td>
-                <td>{{subject.caPercent}}</td>
-                <td>{{subject.caMark}}</td>
-                <td>{{subject.percent40}}</td>
-                <td>{{subject.percent55}}</td>
-                <td>{{subject.percent70}}</td>
-                <td><button ng-click="remove(subject.name)">Delete</button></td>
-            </tr>
-        </table>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1>PassMeNot</h1>
+                <div ng-controller="Controller">
+                    <form class="form-horizontal" role="form" name="addSubject" ng-submit="add()" novalidate>
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-2 control-label">Name</label>
+                            <div class="col-sm-10">
+                                <input type="text" placeholder="Module Name" ng-model="subject.name" class="form-control" required />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">CA Percentage</label>
+                            <div class="col-sm-10">
+                                <input type="number" class="form-control" placeholder="CA Percentage" ng-model="subject.caPercent" min="0" max="99" required  />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">CA Mark</label>
+                            <div class="col-sm-10">
+                                <input type="number" class="form-control" placeholder="CA Mark" ng-model="subject.caMark" min="0" max="100" required />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-default">Add Subject</button>
+                            </div>
+                        </div>
+                    </form>
+                    <table class="table">
+                        <tr>
+                            <th>Name</th>
+                            <th>CA%</th>
+                            <th>CA Mark</th>
+                            <th>40%</th>
+                            <th>55%</th>
+                            <th>70%</th>
+                            <th></th>
+                        </tr>
+                        <tr ng-repeat="subject in subjects">
+                            <td>{{subject.name}}</td>
+                            <td>{{subject.caPercent}}</td>
+                            <td>{{subject.caMark}}</td>
+                            <td>{{subject.percent40}}</td>
+                            <td>{{subject.percent55}}</td>
+                            <td>{{subject.percent70}}</td>
+                            <td><button ng-click="remove(subject.name)" class="btn btn-danger">Delete</button></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            
+        </div>
     </div> 
 </body>
 </html>
