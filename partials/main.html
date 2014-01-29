@@ -39,18 +39,20 @@
                         <th>Name</th>
                         <th>CA%</th>
                         <th>CA Mark</th>
-                        <th>40%</th>
-                        <th>55%</th>
-                        <th>70%</th>
-                        <th></th>
+                        <th ng-repeat="aim in aims">{{aim}}% <a href="#" ng-click="removeAim(aim)"><i class="fa fa-trash-o"></i></a></th>
+                        <th ng-if="!acceptsMoreAims()">
+                            <form ng-submit="addAim(newAim);newAim=''">
+                                <input type="text" class="form-control input-sm" ng-model="newAim" style="width:50px;">
+                            </form>
+                        </th>
+                        <th>Actions</th>
                     </tr>
                     <tr ng-repeat="subject in subjects">
                         <td>{{subject.name}}</td>
                         <td>{{subject.caPercent}}</td>
                         <td>{{subject.caMark}}</td>
-                        <td>{{subject.percent40}}</td>
-                        <td>{{subject.percent55}}</td>
-                        <td>{{subject.percent70}}</td>
+                        <td ng-repeat="aim in aims">{{calculateExamMark(aim, subject)}}</td>
+                        <td ng-if="!acceptsMoreAims()"></td>
                         <td><button ng-click="remove(subject.name)" class="btn btn-danger">Delete</button></td>
                     </tr>
                 </table>

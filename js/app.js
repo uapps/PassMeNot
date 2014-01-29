@@ -3,35 +3,89 @@ angular.module('PassMeNot', ['ngRoute'])
 	.config(['$routeProvider', function($routeProvider) {
 		$routeProvider
 			.when('/', {templateUrl: 'partials/main.html', controller: 'Controller'})
-			.when('/:state', {templateUrl: 'partials/main.html', controller: 'Controller'})
-			.otherwise({redirectTo: '/:state'})
+			.when('/:subjects/:aims', {templateUrl: 'partials/main.html', controller: 'Controller'})
+			.otherwise({redirectTo: '/'})
 	}])
 
-	.controller('Controller', ['$scope', '$routeParams', function ($scope, $routeParams) {
+    .factory('Store', function() {
+        return {
+            get: function(name) {
+                return JSON.parse(atob(localStorage[name]))
+            },
+            set: function(name, value) {
+                if (value) localStorage[name] = btoa(JSON.stringify(value))
+            },
+            has: function(name) {
+                return !!localStorage[name]
+            },
+            empty:function(name) {
+                localStorage[name] = null
+            },
+            valid: function(name, value) {
+                var valid;
+                try {
+                    if (value) valid = JSON.parse(atob(value))
+                    else valid = JSON.parse(atob(localStorage[name]))
+                } catch(err) {
+                    valid = false
+                }
+                return valid
+            }
+        }
+    })
+
+	.controller('Controller', ['$scope', '$routeParams', 'Store', function ($scope, $routeParams, Store) {
 		$scope.initialize = function() {
-			if (hasStore() && validStore()) $scope.subjects = getStore()
+			if (Store.has('subjects') && Store.valid('subjects')) $scope.subjects = Store.get('subjects')
 			else $scope.subjects = []
+            if (Store.has('aims') && Store.valid('aims')) $scope.aims = Store.get('aims')
+            else $scope.aims = [40]
 		}
 
 		$scope.add = function(){
-			$scope.subject.percent40 = calculateExamMark(40)
-			$scope.subject.percent55 = calculateExamMark(55)
-			$scope.subject.percent70 = calculateExamMark(70)
-
 			var pos = indexOf($scope.subject.name)
 			if(pos) $scope.subjects[pos] = angular.copy($scope.subject)
 			else $scope.subjects.push(angular.copy($scope.subject))
 			$scope.subject = {}
 			$scope.addSubject.$setPristine()
 		}
+
 		$scope.remove = function(name){
 			var pos = indexOf(name)
 			if(pos) $scope.subjects.splice(pos, 1)
 		}
 
+        $scope.addAim = function(newAim) {
+            $scope.aims.push(newAim)
+            $scope.newAim = ''
+        }
+
+        $scope.removeAim = function(aim) {
+            for (var i = 0; i < $scope.aims.length; i++) {
+                if ($scope.aims[i] == aim) {
+                    $scope.aims.splice(i, 1)
+                    break
+                }
+            }
+        }
+
+        $scope.acceptsMoreAims = function() {
+            return $scope.aims.length > 2
+        }
+
+        $scope.calculateExamMark = function(desiredOverallMark, subject) {
+            return ((100*(desiredOverallMark-subject.caMark))/(100-subject.caPercent)).toPrecision(3)
+        }
+
 		$scope.$watch('subjects', function() {
-			setStore()
+            var subjects = angular.copy($scope.subjects)
+			Store.set('subjects', subjects)
 		}, true);
+
+        $scope.$watch('aims', function() {
+            var aims= angular.copy($scope.aims)
+            Store.set('aims', aims)
+        }, true);
 
 		indexOf = function(name){
 			for(var key in $scope.subjects){
@@ -41,40 +95,12 @@ angular.module('PassMeNot', ['ngRoute'])
 			return false
 		}
 
-		calculateExamMark = function(desiredOverallMark) {
-			return ((100*(desiredOverallMark-$scope.subject.caMark))/(100-$scope.subject.caPercent)).toPrecision(3)
-		}
-
-		setStore = function(store) {
-			if (store) localStorage['store'] = store
-			else localStorage['store'] = btoa(JSON.stringify(angular.copy($scope.subjects)))
-			$scope.state = localStorage['store']
-		}
-
-		getStore = function() {
-			return JSON.parse(atob(localStorage['store']))
-		}
-
-		hasStore = function() {
-			return !!localStorage['store']
-		}
-
-		emptyStore = function() {
-			localStorage['store'] = null
-		}
-
-		validStore = function(store) {
-			try {
-				if (store) valid = JSON.parse(atob(store))
-				else valid = JSON.parse(atob(localStorage['store']))
-			} catch(err) {
-				valid = false
-			}
-			return valid
-		}
-
-		if ($routeParams.state && validStore($routeParams.state)) {
-			setStore($routeParams.state)
+		if ($routeParams.subjects && Store.valid('subjects', $routeParams.subjects
+            && $routeParams.aims && Store.valid('aims', $routeParams.aims))) {
+            var subjects = JSON.parse(atob($routeParams.subjects))
+            var aims= JSON.parse(atob($routeParams.aims))
+			Store.set('subjects', subjects)
+            Store.set('aims', aims)
 		}
 
 		$scope.initialize()
