@@ -64,8 +64,7 @@ angular.module('PassMeNot', ['ngRoute'])
         	var newAim = form.newAim.$modelValue
      
         	if(form.$valid){
-	            $scope.aims.push(newAim)
-	            newAim = ''
+	            if($scope.aims.indexOf(newAim) == -1) $scope.aims.push(newAim)
 	            form.$setPristine()
 	        }
         }
@@ -131,8 +130,6 @@ angular.module('PassMeNot', ['ngRoute'])
 				}
 
 				var validMark = function(mark){
-					console.log(mark);
-					console.log(scope);
 					if(mark == undefined) return true
 					if(!isNumeric(mark) || scope.caWeight == undefined || mark > 100) return false
 					return true
