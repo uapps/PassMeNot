@@ -122,7 +122,7 @@ angular.module('PassMeNot', ['ngRoute'])
 			restrict: 'A',
 			require: 'ngModel',
 			scope: {
-				"caPercent": "="
+				"caWeight": "="
 			},
 			link: function (scope, iElement, iAttrs, ctrl) {
 
@@ -131,8 +131,10 @@ angular.module('PassMeNot', ['ngRoute'])
 				}
 
 				var validMark = function(mark){
+					console.log(mark);
+					console.log(scope);
 					if(mark == undefined) return true
-					if(!isNumeric(mark) || scope.caPercent == undefined || mark > 100) return false
+					if(!isNumeric(mark) || scope.caWeight == undefined || mark > 100) return false
 					return true
 				}
 
