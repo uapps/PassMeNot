@@ -50,7 +50,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-xs-3 col-xs-offset-2 box">
-                                        <h6>CA %</h6>
+                                        <h6>CA Weight</h6>
                                         <h2>{{subject.caWeight}}</h2>
                                     </div>
                                     <div class="col-xs-3 col-xs-offset-2 box">
@@ -80,7 +80,7 @@
                     <table class="table table-striped table-bordered">
                         <tr>
                             <th>Name</th>
-                            <th>CA%</th>
+                            <th>CA Weight</th>
                             <th>CA Mark</th>
                             <th ng-repeat="aim in aims">{{aim}}% <a href="#" ng-click="removeAim(aim)"><i class="fa fa-trash-o"></i></a></th>
                             <th ng-if="!acceptsMoreAims()">
