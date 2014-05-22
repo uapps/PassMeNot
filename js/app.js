@@ -69,6 +69,8 @@ angular.module('PassMeNot', ['ngRoute'])
             }
         }
 
+        $scope.identity = angular.identity;
+
         $scope.acceptsMoreAims = function() {
             return $scope.aims.length > 2
         }
