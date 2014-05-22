@@ -21,8 +21,8 @@ ul.subjects li h1 {
     margin: 0 0 5px 0;
 }
 
-input.aim {
-    width: 50px;
+.input-group.aim {
+    width: 100px;
     margin: 0 auto;
 }
 

@@ -35,11 +35,15 @@ angular.module('PassMeNot', ['ngRoute'])
     })
 
 	.controller('Controller', ['$scope', '$routeParams', 'Store', function ($scope, $routeParams, Store) {
+
+		$scope.identity = angular.identity
+
 		$scope.initialize = function() {
 			if (Store.has('subjects') && Store.valid('subjects')) $scope.subjects = Store.get('subjects')
 			else $scope.subjects = []
             if (Store.has('aims') && Store.valid('aims')) $scope.aims = Store.get('aims')
             else $scope.aims = [40]
+
 		}
 
 		$scope.add = function(){
@@ -55,9 +59,15 @@ angular.module('PassMeNot', ['ngRoute'])
 			if(pos) $scope.subjects.splice(pos, 1)
 		}
 
-        $scope.addAim = function(newAim) {
-            $scope.aims.push(newAim)
-            $scope.newAim = ''
+        $scope.addAim = function() {
+        	var form = this.addAimForm
+        	var newAim = form.newAim.$modelValue
+     
+        	if(form.$valid){
+	            $scope.aims.push(newAim)
+	            newAim = ''
+	            form.$setPristine()
+	        }
         }
 
         $scope.removeAim = function(aim) {
@@ -68,8 +78,6 @@ angular.module('PassMeNot', ['ngRoute'])
                 }
             }
         }
-
-        $scope.identity = angular.identity;
 
         $scope.acceptsMoreAims = function() {
             return $scope.aims.length > 2

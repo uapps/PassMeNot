@@ -63,8 +63,13 @@
                                 <tr>
                                     <th ng-repeat="aim in aims | orderBy:identity" class="text-center">{{aim}}% <a href="#" ng-click="removeAim(aim)"><i class="fa fa-trash-o"></i></a></th>
                                     <th ng-if="!acceptsMoreAims()">
-                                        <form ng-submit="addAim(newAim);newAim=''">
-                                            <input type="text" class="form-control input-sm aim" ng-model="newAim">
+                                        <form name="addAimForm" ng-submit="addAim()">
+                                            <div class="input-group aim" ng-class="{ 'has-error' : addAimForm.newAim.$invalid && !addAimForm.newAim.$pristine }">
+                                                <input name="newAim" type="number" min="1" max="100" class="form-control input-sm aim" ng-model="newAim" required>
+                                                <span class="input-group-addon">
+                                                    <a href="#" ng-click="addAim()"><i class="fa fa-plus"></i></a>
+                                                </span>                                        
+                                            </div>
                                         </form>
                                     </th>
                                 </tr>
@@ -84,8 +89,14 @@
                             <th>CA Mark</th>
                             <th ng-repeat="aim in aims | orderBy:identity">{{aim}}% <a href="#" ng-click="removeAim(aim)"><i class="fa fa-trash-o"></i></a></th>
                             <th ng-if="!acceptsMoreAims()">
-                                <form ng-submit="addAim(newAim);newAim=''">
-                                    <input type="text" class="form-control input-sm aim" ng-model="newAim">
+                                <form name="addAimForm" ng-submit="addAim()">
+                                    <div class="input-group aim" ng-class="{ 'has-error' : addAimForm.newAim.$invalid && !addAimForm.newAim.$pristine }">
+                                        <input name="newAim" type="number" min="1" max="100" class="form-control input-sm aim" ng-model="newAim" required>
+                                        <span class="input-group-addon">
+                                            <a href="#" ng-click="addAim()"><i class="fa fa-plus"></i></a>
+                                        </span>                                        
+                                    </div>
+
                                 </form>
                             </th>
                             <th>Actions</th>
