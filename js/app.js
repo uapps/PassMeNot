@@ -74,8 +74,8 @@ angular.module('PassMeNot', ['ngRoute'])
         }
 
         $scope.calculateExamMark = function(desiredOverallMark, subject) {
-            var x = subject.caPercent * (subject.caMark / 100)
-            return (((desiredOverallMark - x) / (100 - subject.caPercent)) * 100).toPrecision(3)
+            var totalFromCa = subject.caWeight * (subject.caMark / 100)
+            return (((desiredOverallMark - totalFromCa) / (100 - subject.caWeight)) * 100).toPrecision(3)
         }
 
 		$scope.$watch('subjects', function() {
