@@ -74,7 +74,8 @@ angular.module('PassMeNot', ['ngRoute'])
         }
 
         $scope.calculateExamMark = function(desiredOverallMark, subject) {
-            return ((100*(desiredOverallMark-subject.caMark))/(100-subject.caPercent)).toPrecision(3)
+            var x = subject.caPercent * (subject.caMark / 100)
+            return (((desiredOverallMark - x) / (100 - subject.caPercent)) * 100).toPrecision(3)
         }
 
 		$scope.$watch('subjects', function() {
@@ -114,14 +115,14 @@ angular.module('PassMeNot', ['ngRoute'])
 				"caPercent": "="
 			},
 			link: function (scope, iElement, iAttrs, ctrl) {
-				
+
 				var isNumeric = function(s){
 					return (+s).toString() === s
 				}
 
 				var validMark = function(mark){
 					if(mark == undefined) return true
-					if(!isNumeric(mark) || scope.caPercent == undefined || mark > scope.caPercent) return false
+					if(!isNumeric(mark) || scope.caPercent == undefined || mark > 100) return false
 					return true
 				}
 
