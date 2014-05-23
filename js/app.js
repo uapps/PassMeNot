@@ -1,4 +1,4 @@
-angular.module('PassMeNot', ['ngRoute', 'ui.bootstrap'])
+angular.module('PassMeNot', ['ngRoute', 'ngAnimate', 'ui.bootstrap'])
 
 	.config(['$routeProvider', function($routeProvider) {
 		$routeProvider

@@ -2,6 +2,44 @@ ul.subjects > li {
   margin-bottom: 20px;
   padding: 20px;
   background: #F9F9F9;
+  position: relative;
+  -webkit-transition: 400ms ease-in all;
+  -moz-transition: 400ms ease-in all;
+  -ms-transition: 400ms ease-in all;
+  -o-transition: 400ms ease-in all;
+  transition: 400ms ease-in all;
+}
+ul.subjects > li.ng-enter {
+  opacity: 0;
+  -webkit-transform: rotateX(180deg) rotateY(180deg) translatez(0px);
+  -moz-transform: rotateX(180deg) rotateY(180deg) translatez(0px);
+  -ms-transform: rotateX(180deg) rotateY(180deg) translatez(0px);
+  -o-transform: rotateX(180deg) rotateY(180deg) translatez(0px);
+  transform: rotateX(180deg) rotateY(180deg) translatez(0px);
+}
+ul.subjects > li.ng-enter.ng-enter-active {
+  opacity: 1;
+  -webkit-transform: rotateX(0deg) rotateY(0deg) translatez(0px);
+  -moz-transform: rotateX(0deg) rotateY(0deg) translatez(0px);
+  -ms-transform: rotateX(0deg) rotateY(0deg) translatez(0px);
+  -o-transform: rotateX(0deg) rotateY(0deg) translatez(0px);
+  transform: rotateX(0deg) rotateY(0deg) translatez(0px);
+}
+ul.subjects > li.ng-leave {
+  opacity: 1;
+  -webkit-transform: rotateX(0deg) rotateY(0deg) translatez(0px);
+  -moz-transform: rotateX(0deg) rotateY(0deg) translatez(0px);
+  -ms-transform: rotateX(0deg) rotateY(0deg) translatez(0px);
+  -o-transform: rotateX(0deg) rotateY(0deg) translatez(0px);
+  transform: rotateX(0deg) rotateY(0deg) translatez(0px);
+}
+ul.subjects > li.ng-leave.ng-leave-active {
+  opacity: 0;
+  -webkit-transform: rotateX(180deg) rotateY(180deg) translatez(0px);
+  -moz-transform: rotateX(180deg) rotateY(180deg) translatez(0px);
+  -ms-transform: rotateX(180deg) rotateY(180deg) translatez(0px);
+  -o-transform: rotateX(180deg) rotateY(180deg) translatez(0px);
+  transform: rotateX(180deg) rotateY(180deg) translatez(0px);
 }
 ul.subjects > li h1 {
   font-weight: 100;
@@ -86,11 +124,17 @@ span.input-group-addon a {
   letter-spacing: 2px;
 }
 :-moz-placeholder {
-  color: #fff;
+  color: #999999 !important;
+  font-weight: 100;
+  letter-spacing: 2px;
 }
 ::-moz-placeholder {
-  color: #fff;
+  color: #999999 !important;
+  font-weight: 100;
+  letter-spacing: 2px;
 }
 :-ms-input-placeholder {
-  color: #fff;
+  color: #999999 !important;
+  font-weight: 100;
+  letter-spacing: 2px;
 }
