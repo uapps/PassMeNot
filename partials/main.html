@@ -14,19 +14,19 @@
 								</div>
 
 							</div>
-							<div class="form-group" ng-class="{ 'has-error' : addSubject.caPercent.$invalid && !addSubject.caPercent.$pristine }">
+							<div class="form-group" ng-class="{ 'has-error' : addSubject.caWeight.$invalid && !addSubject.caWeight.$pristine }">
 								<div class="col-sm-12">
-									<input id="caPercent" type="number" name="caPercent" class="form-control" placeholder="CA Percentage" ng-model="subject.caPercent" min="0" max="99" required  />
-									<span ng-show="addSubject.caPercent.$error.max" class="help-block">Percentage too large.</span>
-									<span ng-show="addSubject.caPercent.$error.min" class="help-block">Percentage too small.</span>
+									<input id="caWeight" type="number" name="caWeight" class="form-control" placeholder="CA Weight (%)" ng-model="subject.caWeight" min="0" max="99" required  />
+									<span ng-show="addSubject.caWeight.$error.max" class="help-block">Weight too large.</span>
+									<span ng-show="addSubject.caWeight.$error.min" class="help-block">Weight too small.</span>
 								</div>
 							</div>
 							<div class="form-group" ng-class="{ 'has-error' : addSubject.caMark.$invalid && !addSubject.caMark.$pristine }">
 								<div class="col-sm-12">
-									<input id="caMark" type="number" name="caMark" class="form-control" placeholder="CA Mark" ng-model="subject.caMark" min="0" max="100" required ca-mark-validate ca-percent="subject.caPercent" />
+									<input id="caMark" type="number" name="caMark" class="form-control" placeholder="CA Mark (%)" ng-model="subject.caMark" min="0" max="100" required ca-mark-validate ca-weight="subject.caWeight" />
 									<span ng-show="addSubject.caMark.$error.max" class="help-block">Percentage too large</span>
 									<span ng-show="addSubject.caMark.$error.min" class="help-block">Percentage too small</span>
-									<span ng-show="addSubject.caMark.$error.maxMark" class="help-block">CA Mark must be less than CA Percentage</span>
+									<span ng-show="addSubject.caMark.$error.maxMark" class="help-block">CA Mark must be less than CA Weight</span>
 								</div>
 							</div>
 							<div class="form-group">
@@ -45,32 +45,41 @@
 										<h1>{{subject.name}} <a href="javascript:void(0)" class="pull-right" ng-click="remove(subject.name)"><i class="fa fa-times"></i></a></h1>
 										<div class="row">
 											<div class="col-lg-6">
-												<div class="row text-center box">
-													<div class="col-lg-4">
-														<input type="number" ng-model="subject.caPercent" disabled="disabled">
+												<div class="row text-center">
+													<div class="col-lg-4 col-md-4 col-md-offset-1">
+														<div class="box">
+															<input type="number" ng-model="subject.caWeight" disabled="disabled">
+														</div>
 													</div>
-													<div class="col-lg-2 col-lg-offset-1">
-														<div class="">
+													<div class="col-lg-2 col-md-2">
+														<div class="box box-divider">
 															/
 														</div>
 													</div>
-													<div class="col-lg-4 col-lg-offset-1">
-														<input type="number" ng-model="subject.caMark" disabled="disabled">
+													<div class="col-lg-4 col-lg-offset-1 col-md-4">
+														<div class="box">
+															<input type="number" ng-model="subject.caMark" disabled="disabled">
+														</div>
 													</div>
 												</div>
 											</div>
 											<div class="col-lg-6">
 												<table class="table text-center">
 													<tr>
-														<th ng-repeat="aim in aims" class="text-center">{{aim}}% <a href="#" ng-click="removeAim(aim)"><i class="fa fa-trash-o"></i></a></th>
+														<th ng-repeat="aim in aims | orderBy:identity" class="text-center">{{aim}}% <a href="#" ng-click="removeAim(aim)"><i class="fa fa-trash-o"></i></a></th>
 														<th ng-if="!acceptsMoreAims()">
-															<form ng-submit="addAim(newAim);newAim=''">
-																<input type="text" class="form-control input-sm aim" ng-model="newAim">
+															<form name="addAimForm" ng-submit="addAim()">
+																<div class="input-group aim" ng-class="{ 'has-error' : addAimForm.newAim.$invalid && !addAimForm.newAim.$pristine }">
+																	<input name="newAim" type="number" min="1" max="100" class="form-control input-sm aim" ng-model="newAim" required>
+																	<span class="input-group-addon">
+                                                                        <a type="submit" href="#"><i class="fa fa-plus"></i></a>
+                                                                    </span>
+																</div>
 															</form>
 														</th>
 													</tr>
 													<tr>
-														<td ng-repeat="aim in aims">{{calculateExamMark(aim, subject)}} %</td>
+														<td ng-repeat="aim in aims | orderBy:identity">{{calculateExamMark(aim, subject)}} %</td>
 														<td ng-if="!acceptsMoreAims()"></td>
 													</tr>
 												</table>

@@ -17,14 +17,18 @@ ul {
         font-size: 3em;
         font-weight: 100;
         border-radius: 0px;
-        border: 1px solid transparent;
+        margin: 10px 0;
+        padding: 10px;
+        background: #ffffff;
 
-        &.no-border {
-          border: 1px solid transparent;
+        &.box-divider {
+          font-size: 3em;
+          background: transparent;
         }
 
         input[type=number] {
           width: 100%;
+          background: transparent;
         }
       }
     }
@@ -40,9 +44,14 @@ ul {
   }
 }
 
+.input-group {
+  &.aim {
+    width: 100px;
+    margin: 0 auto;
+  }
+}
+
 .page-header {
-
-
   > h1 {
     font-size: 3em;
     font-weight: 100;
@@ -70,12 +79,6 @@ ul {
   }
 }
 
-.box {
-  border:1px solid #ddd;
-  border-radius: 3px;
-  margin-bottom: 10px;
-}
-
 input[type=text],
 input[type=number] {
   background: #F9F9F9;
@@ -89,8 +92,17 @@ input[type=number] {
 
   &.aim {
     background: white;
-    width: 50px;
     margin: 0 auto;
+  }
+}
+
+span.input-group-addon {
+  border-bottom-right-radius: 0px !important;
+  border-top-right-radius: 0px !important;
+  border: 1px solid transparent;
+
+  a > {
+    color: white;
   }
 }
 

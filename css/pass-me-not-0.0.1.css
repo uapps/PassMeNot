@@ -13,19 +13,27 @@ ul.subjects > li .box {
   font-size: 3em;
   font-weight: 100;
   border-radius: 0px;
-  border: 1px solid transparent;
+  margin: 10px 0;
+  padding: 10px;
+  background: #ffffff;
 }
-ul.subjects > li .box.no-border {
-  border: 1px solid transparent;
+ul.subjects > li .box.box-divider {
+  font-size: 3em;
+  background: transparent;
 }
 ul.subjects > li .box input[type=number] {
   width: 100%;
+  background: transparent;
 }
 ul.list-unstyled .page-header {
   margin: 10px;
 }
 ul.list-unstyled .page-header > h1 {
   margin: 0;
+}
+.input-group.aim {
+  width: 100px;
+  margin: 0 auto;
 }
 .page-header > h1 {
   font-size: 3em;
@@ -48,11 +56,6 @@ ul.list-unstyled .page-header > h1 {
 .form-box .btn:hover {
   transition: 200ms linear background;
 }
-.box {
-  border: 1px solid #ddd;
-  border-radius: 3px;
-  margin-bottom: 10px;
-}
 input[type=text],
 input[type=number] {
   background: #F9F9F9;
@@ -67,8 +70,15 @@ input[type=number]:focus {
 input[type=text].aim,
 input[type=number].aim {
   background: white;
-  width: 50px;
   margin: 0 auto;
+}
+span.input-group-addon {
+  border-bottom-right-radius: 0px !important;
+  border-top-right-radius: 0px !important;
+  border: 1px solid transparent;
+}
+span.input-group-addon a {
+  color: white;
 }
 ::-webkit-input-placeholder {
   color: #999999 !important;

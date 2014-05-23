@@ -64,7 +64,9 @@ angular.module('PassMeNot', ['ngRoute', 'ui.bootstrap'])
         	var newAim = form.newAim.$modelValue
      
         	if(form.$valid){
-	            if($scope.aims.indexOf(newAim) == -1) $scope.aims.push(newAim)
+	            if($scope.aims.indexOf(newAim) == -1) {
+					$scope.aims.push(newAim)
+				}
 	            form.$setPristine()
 	        }
         }
