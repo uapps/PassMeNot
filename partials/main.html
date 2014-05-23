@@ -39,10 +39,14 @@
 					<div class="col-lg-8">
 						<hr class="visible-xs visible-sm visible-md">
 						<ul class="list-unstyled subjects">
+							<li ng-if="subjects.length == 0">
+								<h1>No Entries found</h1>
+								<p>Use the input form on the right-hand side</p>
+							</li>
 							<li ng-repeat="subject in subjects">
 								<div class="row">
 									<div class="col-lg-12">
-										<h1>{{subject.name}} <a href="javascript:void(0)" class="pull-right" ng-click="remove(subject.name)"><i class="fa fa-times"></i></a></h1>
+										<h1>{{subject.name}} <a href="javascript:void(0)" class="pull-right text-danger" ng-click="remove(subject.name)"><i class="fa fa-times"></i></a></h1>
 										<div class="row">
 											<div class="col-lg-6">
 												<div class="row text-center">
@@ -66,7 +70,8 @@
 											<div class="col-lg-6">
 												<table class="table text-center">
 													<tr>
-														<th ng-repeat="aim in aims | orderBy:identity" class="text-center">{{aim}}% <a href="#" ng-click="removeAim(aim)"><i class="fa fa-trash-o"></i></a></th>
+														<th ng-if="aims.length == 0"></th>
+														<th ng-repeat="aim in aims | orderBy:identity" class="text-center">{{aim}}% <a href="#" ng-click="removeAim(aim)"><i class="fa fa-trash-o text-danger"></i></a></th>
 														<th ng-if="!acceptsMoreAims()">
 															<form name="addAimForm" ng-submit="addAim();newAim=''">
 																<div class="input-group aim" ng-class="{ 'has-error' : addAimForm.newAim.$invalid && !addAimForm.newAim.$pristine }">
@@ -79,6 +84,7 @@
 														</th>
 													</tr>
 													<tr>
+														<td ng-if="aims.length == 0"><p>You have not defined any Aims</p></td>
 														<td ng-repeat="aim in aims | orderBy:identity">{{calculateExamMark(aim, subject)}} %</td>
 														<td ng-if="!acceptsMoreAims()"></td>
 													</tr>
