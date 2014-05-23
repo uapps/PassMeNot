@@ -35,11 +35,15 @@ angular.module('PassMeNot', ['ngRoute', 'ui.bootstrap'])
     })
 
 	.controller('Controller', ['$scope', '$routeParams', 'Store', function ($scope, $routeParams, Store) {
+
+		$scope.identity = angular.identity
+
 		$scope.initialize = function() {
 			if (Store.has('subjects') && Store.valid('subjects')) $scope.subjects = Store.get('subjects')
 			else $scope.subjects = []
             if (Store.has('aims') && Store.valid('aims')) $scope.aims = Store.get('aims')
             else $scope.aims = [40]
+
 		}
 
 		$scope.add = function(){
@@ -55,9 +59,14 @@ angular.module('PassMeNot', ['ngRoute', 'ui.bootstrap'])
 			if(pos) $scope.subjects.splice(pos, 1)
 		}
 
-        $scope.addAim = function(newAim) {
-            $scope.aims.push(newAim)
-            $scope.newAim = ''
+        $scope.addAim = function() {
+        	var form = this.addAimForm
+        	var newAim = form.newAim.$modelValue
+     
+        	if(form.$valid){
+	            if($scope.aims.indexOf(newAim) == -1) $scope.aims.push(newAim)
+	            form.$setPristine()
+	        }
         }
 
         $scope.removeAim = function(aim) {
@@ -74,7 +83,8 @@ angular.module('PassMeNot', ['ngRoute', 'ui.bootstrap'])
         }
 
         $scope.calculateExamMark = function(desiredOverallMark, subject) {
-            return ((100*(desiredOverallMark-subject.caMark))/(100-subject.caPercent)).toPrecision(3)
+            var totalFromCa = subject.caWeight * (subject.caMark / 100)
+            return (((desiredOverallMark - totalFromCa) / (100 - subject.caWeight)) * 100).toPrecision(3)
         }
 
 		$scope.$watch('subjects', function() {
@@ -111,17 +121,17 @@ angular.module('PassMeNot', ['ngRoute', 'ui.bootstrap'])
 			restrict: 'A',
 			require: 'ngModel',
 			scope: {
-				"caPercent": "="
+				"caWeight": "="
 			},
 			link: function (scope, iElement, iAttrs, ctrl) {
-				
+
 				var isNumeric = function(s){
 					return (+s).toString() === s
 				}
 
 				var validMark = function(mark){
 					if(mark == undefined) return true
-					if(!isNumeric(mark) || scope.caPercent == undefined || mark > scope.caPercent) return false
+					if(!isNumeric(mark) || scope.caWeight == undefined || mark > 100) return false
 					return true
 				}
 
