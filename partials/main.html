@@ -68,11 +68,11 @@
 													<tr>
 														<th ng-repeat="aim in aims | orderBy:identity" class="text-center">{{aim}}% <a href="#" ng-click="removeAim(aim)"><i class="fa fa-trash-o"></i></a></th>
 														<th ng-if="!acceptsMoreAims()">
-															<form name="addAimForm" ng-submit="addAim()">
+															<form name="addAimForm" ng-submit="addAim();newAim=''">
 																<div class="input-group aim" ng-class="{ 'has-error' : addAimForm.newAim.$invalid && !addAimForm.newAim.$pristine }">
 																	<input name="newAim" type="number" min="1" max="100" class="form-control input-sm aim" ng-model="newAim" required>
 																	<span class="input-group-addon">
-                                                                        <a type="submit" href="#"><i class="fa fa-plus"></i></a>
+                                                                        <a href="#" ng-click="addAim();newAim=''"><i class="fa fa-plus"></i></a>
                                                                     </span>
 																</div>
 															</form>
