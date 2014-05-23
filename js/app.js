@@ -1,4 +1,4 @@
-angular.module('PassMeNot', ['ngRoute'])
+angular.module('PassMeNot', ['ngRoute', 'ui.bootstrap'])
 
 	.config(['$routeProvider', function($routeProvider) {
 		$routeProvider
@@ -64,7 +64,9 @@ angular.module('PassMeNot', ['ngRoute'])
         	var newAim = form.newAim.$modelValue
      
         	if(form.$valid){
-	            if($scope.aims.indexOf(newAim) == -1) $scope.aims.push(newAim)
+	            if($scope.aims.indexOf(newAim) == -1) {
+					$scope.aims.push(newAim)
+				}
 	            form.$setPristine()
 	        }
         }
