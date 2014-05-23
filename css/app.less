@@ -1,14 +1,65 @@
-ul {
+.transition(@transition) {
+  -webkit-transition: @transition;
+  -moz-transition: @transition;
+  -ms-transition: @transition;
+  -o-transition: @transition;
+  transition: @transition;
+}
 
+.transform(@transform) {
+  -webkit-transform: @transform;
+  -moz-transform: @transform;
+  -ms-transform: @transform;
+  -o-transform: @transform;
+  transform: @transform;
+}
+
+ul {
   &.subjects {
     > li {
       margin-bottom: 20px;
       padding: 20px;
       background: #F9F9F9;
+      position: relative;
+      .transition(400ms ease-in all);
+
+      &.ng-enter {
+        opacity: 0;
+        .transform(rotateX(180deg) rotateY(180deg) translatez(0px));
+
+        &.ng-enter-active {
+          opacity: 1;
+          .transform(rotateX(0deg) rotateY(0deg) translatez(0px));
+        }
+      }
+
+      &.ng-leave {
+        opacity: 1;
+        .transform(rotateX(0deg) rotateY(0deg) translatez(0px));
+
+        &.ng-leave-active {
+          opacity: 0;
+          .transform(rotateX(180deg) rotateY(180deg) translatez(0px));
+        }
+      }
+
+      p {
+        font-weight: 100;
+        letter-spacing: 1px;
+      }
+
+      table {
+        &.table {
+          th {
+            vertical-align: middle;
+            border-top: 0px solid transparent;
+          }
+        }
+      }
 
       h1 {
         font-weight: 100;
-        margin: 0 0 5px 0;
+        margin: 0 0 1px 0;
         padding-bottom: 5px;
         border-bottom: 1px solid #ddd;
       }
@@ -100,6 +151,7 @@ span.input-group-addon {
   border-bottom-right-radius: 0px !important;
   border-top-right-radius: 0px !important;
   border: 1px solid transparent;
+  background: #5bc0de;
 
   a > {
     color: white;
@@ -112,11 +164,17 @@ span.input-group-addon {
   letter-spacing: 2px;
 }
 :-moz-placeholder {
-  color: #fff;
+  color: #999999 !important;
+  font-weight: 100;
+  letter-spacing: 2px;
 }
 ::-moz-placeholder {
-  color: #fff;
+  color: #999999 !important;
+  font-weight: 100;
+  letter-spacing: 2px;
 }
 :-ms-input-placeholder {
-  color: #fff;
+  color: #999999 !important;
+  font-weight: 100;
+  letter-spacing: 2px;
 }
