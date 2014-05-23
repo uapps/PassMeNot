@@ -1,0 +1,86 @@
+ul.subjects > li {
+  margin-bottom: 20px;
+  padding: 20px;
+  background: #F9F9F9;
+}
+ul.subjects > li h1 {
+  font-weight: 100;
+  margin: 0 0 5px 0;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #ddd;
+}
+ul.subjects > li .box {
+  font-size: 3em;
+  font-weight: 100;
+  border-radius: 0px;
+  border: 1px solid transparent;
+}
+ul.subjects > li .box.no-border {
+  border: 1px solid transparent;
+}
+ul.subjects > li .box input[type=number] {
+  width: 100%;
+}
+ul.list-unstyled .page-header {
+  margin: 10px;
+}
+ul.list-unstyled .page-header > h1 {
+  margin: 0;
+}
+.page-header > h1 {
+  font-size: 3em;
+  font-weight: 100;
+}
+.page-header > h1 > small {
+  font-weight: 100;
+}
+.form-box {
+  margin-bottom: 20px;
+}
+.form-box .btn {
+  transition: 200ms linear background;
+  border-radius: 0px;
+  border: 1px solid transparent;
+  font-weight: 100;
+  letter-spacing: 1px;
+  font-size: 1.5em;
+}
+.form-box .btn:hover {
+  transition: 200ms linear background;
+}
+.box {
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  margin-bottom: 10px;
+}
+input[type=text],
+input[type=number] {
+  background: #F9F9F9;
+  border: 0 solid transparent;
+  border-radius: 0;
+  box-shadow: 0 0 0 transparent;
+}
+input[type=text]:focus,
+input[type=number]:focus {
+  box-shadow: 0 0 0 transparent;
+}
+input[type=text].aim,
+input[type=number].aim {
+  background: white;
+  width: 50px;
+  margin: 0 auto;
+}
+::-webkit-input-placeholder {
+  color: #999999 !important;
+  font-weight: 100;
+  letter-spacing: 2px;
+}
+:-moz-placeholder {
+  color: #fff;
+}
+::-moz-placeholder {
+  color: #fff;
+}
+:-ms-input-placeholder {
+  color: #fff;
+}

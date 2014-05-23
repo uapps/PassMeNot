@@ -1,105 +1,87 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-12">
-            <h1>PassMeNot</h1>
+			<div class="page-header">
+				<h1>PassMeNot <small>Just Another Final Grade Calculator</small></h1>
+			</div>
             <div>
-                <form class="form-horizontal add-subject" role="form" name="addSubject" ng-submit="add()" novalidate>
-                    <div class="form-group" ng-class="{ 'has-error' : addSubject.name.$invalid && !addSubject.name.$pristine }">
-                        <label for="name" class="col-sm-2 control-label">Name</label>
-                        <div class="col-sm-10">
-                            <input id="name" type="text" name="name" placeholder="Module Name" ng-model="subject.name" class="form-control" required />
-                        </div>
-                        
-                    </div>
-                    <div class="form-group" ng-class="{ 'has-error' : addSubject.caPercent.$invalid && !addSubject.caPercent.$pristine }">
-                        <label for="caPercent" class="col-sm-2 control-label">CA Percentage</label>
-                        <div class="col-sm-10">
-                            <input id="caPercent" type="number" name="caPercent" class="form-control" placeholder="CA Percentage" ng-model="subject.caPercent" min="0" max="99" required  />
-                            <span ng-show="addSubject.caPercent.$error.max" class="help-block">Percentage too large.</span>
-                            <span ng-show="addSubject.caPercent.$error.min" class="help-block">Percentage too small.</span>
-                        </div>
-                    </div>
-                    <div class="form-group" ng-class="{ 'has-error' : addSubject.caMark.$invalid && !addSubject.caMark.$pristine }">
-                        <label for="caMark" class="col-sm-2 control-label">CA Mark</label>
-                        <div class="col-sm-10">
-                            <input id="caMark" type="number" name="caMark" class="form-control" placeholder="CA Mark" ng-model="subject.caMark" min="0" max="100" required ca-mark-validate ca-percent="subject.caPercent" />
-                            <span ng-show="addSubject.caMark.$error.max" class="help-block">Percentage too large</span>
-                            <span ng-show="addSubject.caMark.$error.min" class="help-block">Percentage too small</span>
-                            <span ng-show="addSubject.caMark.$error.maxMark" class="help-block">CA Mark must be less than CA Percentage</span>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-sm-offset-2 col-sm-10">
-                            <button type="submit" class="btn btn-default" ng-disabled="addSubject.$invalid">Add Subject</button>
-                        </div>
-                    </div>
-                </form>
-                <div class="visible-xs">
-                    <ul class="subjects">
-                        <li ng-repeat="subject in subjects" class="text-center">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-xs-6 col-xs-offset-3">
-                                        <h1>{{subject.name}}</h1>
-                                    </div>
-                                    <div class="col-xs-3 text-right">
-                                        <a href="#" ng-click="remove(subject.name)">
-                                            <i class="fa fa-times"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-xs-3 col-xs-offset-2 box">
-                                        <h6>CA %</h6>
-                                        <h2>{{subject.caPercent}}</h2>
-                                    </div>
-                                    <div class="col-xs-3 col-xs-offset-2 box">
-                                        <h6>CA Mark</h6>
-                                        <h2>{{subject.caMark}}</h2>
-                                    </div>
-                                </div>
-                            </div>
-                            <table class="table table-striped table-bordered">
-                                <tr>
-                                    <th ng-repeat="aim in aims" class="text-center">{{aim}}% <a href="#" ng-click="removeAim(aim)"><i class="fa fa-trash-o"></i></a></th>
-                                    <th ng-if="!acceptsMoreAims()">
-                                        <form ng-submit="addAim(newAim);newAim=''">
-                                            <input type="text" class="form-control input-sm aim" ng-model="newAim">
-                                        </form>
-                                    </th>
-                                </tr>
-                                <tr>
-                                    <td ng-repeat="aim in aims">{{calculateExamMark(aim, subject)}} %</td>
-                                    <td ng-if="!acceptsMoreAims()"></td>
-                                </tr>
-                            </table>
-                        </li>
-                    </ul>
-                </div>
-                <div class="hidden-xs">
-                    <table class="table table-striped table-bordered">
-                        <tr>
-                            <th>Name</th>
-                            <th>CA%</th>
-                            <th>CA Mark</th>
-                            <th ng-repeat="aim in aims">{{aim}}% <a href="#" ng-click="removeAim(aim)"><i class="fa fa-trash-o"></i></a></th>
-                            <th ng-if="!acceptsMoreAims()">
-                                <form ng-submit="addAim(newAim);newAim=''">
-                                    <input type="text" class="form-control input-sm aim" ng-model="newAim">
-                                </form>
-                            </th>
-                            <th>Actions</th>
-                        </tr>
-                        <tr ng-repeat="subject in subjects">
-                            <td>{{subject.name}}</td>
-                            <td>{{subject.caPercent}}</td>
-                            <td>{{subject.caMark}}</td>
-                            <td ng-repeat="aim in aims">{{calculateExamMark(aim, subject)}} %</td>
-                            <td ng-if="!acceptsMoreAims()"></td>
-                            <td><button ng-click="remove(subject.name)" class="btn btn-danger">Delete</button></td>
-                        </tr>
-                    </table>
-                </div>
+				<div class="row" style="margin-top: 20px;">
+					<div class="col-lg-4 form-box">
+						<form class="form-horizontal add-subject" role="form" name="addSubject" ng-submit="add()" novalidate>
+							<div class="form-group" ng-class="{ 'has-error' : addSubject.name.$invalid && !addSubject.name.$pristine }">
+								<div class="col-sm-12">
+									<input id="name" type="text" name="name" placeholder="Module Name" ng-model="subject.name" class="form-control" required />
+								</div>
+
+							</div>
+							<div class="form-group" ng-class="{ 'has-error' : addSubject.caPercent.$invalid && !addSubject.caPercent.$pristine }">
+								<div class="col-sm-12">
+									<input id="caPercent" type="number" name="caPercent" class="form-control" placeholder="CA Percentage" ng-model="subject.caPercent" min="0" max="99" required  />
+									<span ng-show="addSubject.caPercent.$error.max" class="help-block">Percentage too large.</span>
+									<span ng-show="addSubject.caPercent.$error.min" class="help-block">Percentage too small.</span>
+								</div>
+							</div>
+							<div class="form-group" ng-class="{ 'has-error' : addSubject.caMark.$invalid && !addSubject.caMark.$pristine }">
+								<div class="col-sm-12">
+									<input id="caMark" type="number" name="caMark" class="form-control" placeholder="CA Mark" ng-model="subject.caMark" min="0" max="100" required ca-mark-validate ca-percent="subject.caPercent" />
+									<span ng-show="addSubject.caMark.$error.max" class="help-block">Percentage too large</span>
+									<span ng-show="addSubject.caMark.$error.min" class="help-block">Percentage too small</span>
+									<span ng-show="addSubject.caMark.$error.maxMark" class="help-block">CA Mark must be less than CA Percentage</span>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="col-sm-12">
+									<button type="submit" class="btn btn-success btn-block" ng-disabled="addSubject.$invalid"><i class="fa fa-plus"></i> Add Subject</button>
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="col-lg-8">
+						<hr class="visible-xs visible-sm visible-md">
+						<ul class="list-unstyled subjects">
+							<li ng-repeat="subject in subjects">
+								<div class="row">
+									<div class="col-lg-12">
+										<h1>{{subject.name}} <a href="javascript:void(0)" class="pull-right" ng-click="remove(subject.name)"><i class="fa fa-times"></i></a></h1>
+										<div class="row">
+											<div class="col-lg-6">
+												<div class="row text-center box">
+													<div class="col-lg-4">
+														<input type="number" ng-model="subject.caPercent" disabled="disabled">
+													</div>
+													<div class="col-lg-2 col-lg-offset-1">
+														<div class="">
+															/
+														</div>
+													</div>
+													<div class="col-lg-4 col-lg-offset-1">
+														<input type="number" ng-model="subject.caMark" disabled="disabled">
+													</div>
+												</div>
+											</div>
+											<div class="col-lg-6">
+												<table class="table text-center">
+													<tr>
+														<th ng-repeat="aim in aims" class="text-center">{{aim}}% <a href="#" ng-click="removeAim(aim)"><i class="fa fa-trash-o"></i></a></th>
+														<th ng-if="!acceptsMoreAims()">
+															<form ng-submit="addAim(newAim);newAim=''">
+																<input type="text" class="form-control input-sm aim" ng-model="newAim">
+															</form>
+														</th>
+													</tr>
+													<tr>
+														<td ng-repeat="aim in aims">{{calculateExamMark(aim, subject)}} %</td>
+														<td ng-if="!acceptsMoreAims()"></td>
+													</tr>
+												</table>
+											</div>
+										</div>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
             </div>
         </div>
     </div>
