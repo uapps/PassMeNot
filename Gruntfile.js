@@ -14,6 +14,18 @@ module.exports = function (grunt) {
                 }
             }
         },
+        html2js: {
+            options: {
+                module: 'pass-me-not.templates',
+                rename: function(moduleName) {
+                    return '/pass-me-not' + moduleName.match(/\/[\w-]*\.html/);
+                }
+            },
+            main: {
+                src: ['partials/share.html'],
+                dest: 'js/templates.js'
+            }
+        },
         concat: {
             'pass_me_not_js': {
                 src: [
@@ -21,6 +33,7 @@ module.exports = function (grunt) {
                     'js/angular/angular-route.js',
                     'js/angular/angular-animate.js',
                     'js/angular-ui.min.js',
+                    'js/templates.js',
                     'js/app.js'
                 ],
                 dest: 'build/<%= pkg.name %>-<%= pkg.version %>.js'
@@ -53,6 +66,10 @@ module.exports = function (grunt) {
             js: {
                 files: ['js/**/*.js'],
                 tasks: ['concat', 'uglify']
+            },
+            html: {
+                files: ['partials/share.html'],
+                tasks: ['html2js', 'concat', 'uglify']
             }
         }
     });
@@ -61,7 +78,8 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-concat');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-html2js');
     grunt.loadNpmTasks('grunt-contrib-cssmin');
 
-    grunt.registerTask('build', ['less', 'concat', 'uglify', 'cssmin']);
+    grunt.registerTask('build', ['less', 'html2js' ,'concat', 'uglify', 'cssmin']);
 };
