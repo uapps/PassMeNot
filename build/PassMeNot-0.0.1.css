@@ -7474,16 +7474,126 @@ ul.list-unstyled .page-header > h1 {
 }
 .form-box {
   margin-bottom: 20px;
+  -webkit-transition: 250ms linear all;
+  -moz-transition: 250ms linear all;
+  -ms-transition: 250ms linear all;
+  -o-transition: 250ms linear all;
+  transition: 250ms linear all;
 }
-.form-box .btn {
+.form-box.flip {
+  -webkit-transition: 250ms linear all;
+  -moz-transition: 250ms linear all;
+  -ms-transition: 250ms linear all;
+  -o-transition: 250ms linear all;
+  transition: 250ms linear all;
+  -webkit-transform: rotateY(90deg);
+  -moz-transform: rotateY(90deg);
+  -ms-transform: rotateY(90deg);
+  -o-transform: rotateY(90deg);
+  transform: rotateY(90deg);
+}
+.form-box.flip.flip-back {
+  -webkit-transition: 250ms linear all;
+  -moz-transition: 250ms linear all;
+  -ms-transition: 250ms linear all;
+  -o-transition: 250ms linear all;
+  transition: 250ms linear all;
+  -webkit-transform: rotateY(0deg);
+  -moz-transform: rotateY(0deg);
+  -ms-transform: rotateY(0deg);
+  -o-transform: rotateY(0deg);
+  transform: rotateY(0deg);
+}
+.btn {
+  -webkit-transition: 200ms linear background;
+  -moz-transition: 200ms linear background;
+  -ms-transition: 200ms linear background;
+  -o-transition: 200ms linear background;
   transition: 200ms linear background;
   border-radius: 0px;
   border: 1px solid transparent;
   font-weight: 100;
   letter-spacing: 1px;
   font-size: 1.5em;
+  position: relative;
 }
-.form-box .btn:hover {
+.btn.btn-success {
+  background: #5cb85c;
+}
+.btn.btn-success:hover {
+  background: #4cae4c;
+}
+.btn.btn-success > span {
+  background: #4cae4c;
+}
+.btn.btn-info {
+  background: #5bc0de;
+}
+.btn.btn-info:hover {
+  background: #46b8da;
+}
+.btn.btn-info > span {
+  background: #46b8da;
+}
+.btn.btn-warning {
+  background: #f0ad4e;
+}
+.btn.btn-warning:hover {
+  background: #eea236;
+}
+.btn.btn-warning > span {
+  background: #eea236;
+}
+.btn.btn-danger {
+  background: #d9534f;
+}
+.btn.btn-danger:hover {
+  background: #d43f3a;
+}
+.btn.btn-danger > span {
+  background: #d43f3a;
+}
+.btn.btn-primary {
+  background: #428bca;
+}
+.btn.btn-primary:hover {
+  background: #357ebd;
+}
+.btn.btn-primary > span {
+  background: #357ebd;
+}
+.btn:active,
+.btn:hover {
+  border-color: transparent;
+}
+.btn > span {
+  -webkit-transition: 200ms linear background;
+  -moz-transition: 200ms linear background;
+  -ms-transition: 200ms linear background;
+  -o-transition: 200ms linear background;
+  transition: 200ms linear background;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  width: 44px;
+}
+.btn > span i {
+  position: relative;
+  margin-top: 12px;
+}
+.btn:hover {
+  -webkit-transition: 200ms linear background;
+  -moz-transition: 200ms linear background;
+  -ms-transition: 200ms linear background;
+  -o-transition: 200ms linear background;
+  transition: 200ms linear background;
+}
+.btn:hover > span {
+  -webkit-transition: 200ms linear background;
+  -moz-transition: 200ms linear background;
+  -ms-transition: 200ms linear background;
+  -o-transition: 200ms linear background;
   transition: 200ms linear background;
 }
 input[type=text],
@@ -7503,10 +7613,23 @@ input[type=number].aim {
   margin: 0 auto;
 }
 span.input-group-addon {
+  -webkit-transition: 200ms linear background;
+  -moz-transition: 200ms linear background;
+  -ms-transition: 200ms linear background;
+  -o-transition: 200ms linear background;
+  transition: 200ms linear background;
   border-bottom-right-radius: 0px !important;
   border-top-right-radius: 0px !important;
   border: 1px solid transparent;
   background: #5bc0de;
+}
+span.input-group-addon:hover {
+  -webkit-transition: 200ms linear background;
+  -moz-transition: 200ms linear background;
+  -ms-transition: 200ms linear background;
+  -o-transition: 200ms linear background;
+  transition: 200ms linear background;
+  background: #46b8da;
 }
 span.input-group-addon a {
   color: white;

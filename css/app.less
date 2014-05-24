@@ -1,6 +1,12 @@
 @import (less) "bootstrap.min.css";
 @import (less) "font-awesome.min.css";
 
+@primary : #428bca;
+@warning : #f0ad4e;
+@info    : #5bc0de;
+@danger  : #d9534f;
+@success : #5cb85c;
+
 .transition(@transition) {
   -webkit-transition: @transition;
   -moz-transition: @transition;
@@ -118,17 +124,77 @@ ul {
 
 .form-box {
   margin-bottom: 20px;
+  .transition(250ms linear all);
 
-  .btn {
-    transition: 200ms linear background;
-    border-radius: 0px;
-    border: 1px solid transparent;
-    font-weight: 100;
-    letter-spacing: 1px;
-    font-size: 1.5em;
+  &.flip {
+    .transition(250ms linear all);
+    .transform(rotateY(90deg));
 
-    &:hover {
-      transition: 200ms linear background;
+
+    &.flip-back {
+      .transition(250ms linear all);
+      .transform(rotateY(0deg));
+    }
+  }
+}
+
+.btn {
+  .transition(200ms linear background);
+  border-radius: 0px;
+  border: 1px solid transparent;
+  font-weight: 100;
+  letter-spacing: 1px;
+  font-size: 1.5em;
+  position: relative;
+
+  &.btn-success {
+    background: @success;
+    &:hover {background: darken(@success, 5%);}
+    > span {background: darken(@success, 5%);}
+  }
+  &.btn-info {
+    background: @info;
+    &:hover {background: darken(@info, 5%);}
+    > span {background: darken(@info, 5%);}
+  }
+  &.btn-warning {
+    background: @warning;
+    &:hover {background: darken(@warning, 5%);}
+    > span {background: darken(@warning, 5%);}
+  }
+  &.btn-danger {
+    background: @danger;
+    &:hover {background: darken(@danger, 5%);}
+    > span {background: darken(@danger, 5%);}
+  }
+  &.btn-primary {
+    background: @primary;
+    &:hover {background: darken(@primary, 5%);}
+    > span {background: darken(@primary, 5%);}
+  }
+
+  &:active,
+  &:hover {border-color: transparent;}
+
+  > span {
+    .transition(200ms linear background);
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    width: 44px;
+
+    i {
+      position: relative;
+      margin-top: 12px;
+    }
+  }
+
+  &:hover {
+    .transition(200ms linear background);
+
+    > span {
+      .transition(200ms linear background);
     }
   }
 }
@@ -151,10 +217,16 @@ input[type=number] {
 }
 
 span.input-group-addon {
+  .transition(200ms linear background);
   border-bottom-right-radius: 0px !important;
   border-top-right-radius: 0px !important;
   border: 1px solid transparent;
-  background: #5bc0de;
+  background: @info;
+
+  &:hover {
+    .transition(200ms linear background);
+    background: darken(@info, 5%);
+  }
 
   a > {
     color: white;
