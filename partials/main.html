@@ -7,7 +7,7 @@
             <div>
 				<div class="row" style="margin-top: 20px;">
 					<div class="col-lg-4 form-box">
-						<form class="form-horizontal add-subject" role="form" name="addSubject" ng-submit="add()" novalidate>
+						<form ng-show="!sharedGrades()" class="form-horizontal add-subject" role="form" name="addSubject" ng-submit="add()" novalidate>
 							<div class="form-group" ng-class="{ 'has-error' : addSubject.name.$invalid && !addSubject.name.$pristine }">
 								<div class="col-sm-12">
 									<input id="name" type="text" name="name" placeholder="Module Name" ng-model="subject.name" class="form-control" required />
