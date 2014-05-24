@@ -52,6 +52,14 @@ ul {
         }
       }
 
+      &.ng-move {
+        opacity: 1;
+
+        &.ng-move-active {
+          opacity: 0;
+        }
+      }
+
       p {
         font-weight: 100;
         letter-spacing: 1px;
@@ -124,15 +132,15 @@ ul {
 
 .form-box {
   margin-bottom: 20px;
-  .transition(250ms linear all);
+  .transition(250ms linear -webkit-transfrom -moz-transform -ms-transform -o-transform transform);
 
   &.flip {
-    .transition(250ms linear all);
+    .transition(250ms linear -webkit-transfrom -moz-transform -ms-transform -o-transform transform);
     .transform(rotateY(90deg));
 
 
     &.flip-back {
-      .transition(250ms linear all);
+      .transition(250ms linear -webkit-transfrom -moz-transform -ms-transform -o-transform transform);
       .transform(rotateY(0deg));
     }
   }

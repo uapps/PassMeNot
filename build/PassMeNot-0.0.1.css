@@ -7425,6 +7425,12 @@ ul.subjects > li.ng-leave.ng-leave-active {
   -o-transform: rotateX(180deg) rotateY(180deg) translatez(0px);
   transform: rotateX(180deg) rotateY(180deg) translatez(0px);
 }
+ul.subjects > li.ng-move {
+  opacity: 1;
+}
+ul.subjects > li.ng-move.ng-move-active {
+  opacity: 0;
+}
 ul.subjects > li p {
   font-weight: 100;
   letter-spacing: 1px;
@@ -7474,18 +7480,18 @@ ul.list-unstyled .page-header > h1 {
 }
 .form-box {
   margin-bottom: 20px;
-  -webkit-transition: 250ms linear all;
-  -moz-transition: 250ms linear all;
-  -ms-transition: 250ms linear all;
-  -o-transition: 250ms linear all;
-  transition: 250ms linear all;
+  -webkit-transition: 250ms linear -webkit-transfrom -moz-transform -ms-transform -o-transform transform;
+  -moz-transition: 250ms linear -webkit-transfrom -moz-transform -ms-transform -o-transform transform;
+  -ms-transition: 250ms linear -webkit-transfrom -moz-transform -ms-transform -o-transform transform;
+  -o-transition: 250ms linear -webkit-transfrom -moz-transform -ms-transform -o-transform transform;
+  transition: 250ms linear -webkit-transfrom -moz-transform -ms-transform -o-transform transform;
 }
 .form-box.flip {
-  -webkit-transition: 250ms linear all;
-  -moz-transition: 250ms linear all;
-  -ms-transition: 250ms linear all;
-  -o-transition: 250ms linear all;
-  transition: 250ms linear all;
+  -webkit-transition: 250ms linear -webkit-transfrom -moz-transform -ms-transform -o-transform transform;
+  -moz-transition: 250ms linear -webkit-transfrom -moz-transform -ms-transform -o-transform transform;
+  -ms-transition: 250ms linear -webkit-transfrom -moz-transform -ms-transform -o-transform transform;
+  -o-transition: 250ms linear -webkit-transfrom -moz-transform -ms-transform -o-transform transform;
+  transition: 250ms linear -webkit-transfrom -moz-transform -ms-transform -o-transform transform;
   -webkit-transform: rotateY(90deg);
   -moz-transform: rotateY(90deg);
   -ms-transform: rotateY(90deg);
@@ -7493,11 +7499,11 @@ ul.list-unstyled .page-header > h1 {
   transform: rotateY(90deg);
 }
 .form-box.flip.flip-back {
-  -webkit-transition: 250ms linear all;
-  -moz-transition: 250ms linear all;
-  -ms-transition: 250ms linear all;
-  -o-transition: 250ms linear all;
-  transition: 250ms linear all;
+  -webkit-transition: 250ms linear -webkit-transfrom -moz-transform -ms-transform -o-transform transform;
+  -moz-transition: 250ms linear -webkit-transfrom -moz-transform -ms-transform -o-transform transform;
+  -ms-transition: 250ms linear -webkit-transfrom -moz-transform -ms-transform -o-transform transform;
+  -o-transition: 250ms linear -webkit-transfrom -moz-transform -ms-transform -o-transform transform;
+  transition: 250ms linear -webkit-transfrom -moz-transform -ms-transform -o-transform transform;
   -webkit-transform: rotateY(0deg);
   -moz-transform: rotateY(0deg);
   -ms-transform: rotateY(0deg);
