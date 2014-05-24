@@ -24094,6 +24094,10 @@ angular.module('PassMeNot', ['ngRoute', 'ngAnimate', 'ui.bootstrap', 'pass-me-no
             }
         }
 
+        $scope.sharedGrades = function() {
+            return !!($routeParams.subjects && $routeParams.aims);
+        }
+
         $scope.add = function () {
             var pos = indexOf($scope.subject.name)
             if (pos) $scope.subjects[pos] = angular.copy($scope.subject)

@@ -35,7 +35,8 @@
                                 </div>
 							</div>
 						</form>
-                        <button type="" class="btn btn-warning btn-block" ng-click="openShareModal()"> <i class="fa fa-share"></i> Share Grades</button>
+                        <a ng-show="sharedGrades()" href="#/" class="btn btn-warning btn-block"> <i class="fa fa-share"></i> Personal Grades</a>
+                        <button ng-show="!sharedGrades()" class="btn btn-warning btn-block" ng-click="openShareModal()"> <i class="fa fa-share"></i> Share Grades</button>
                     </div>
 					<div class="col-lg-8">
 						<hr class="visible-xs visible-sm visible-md">
