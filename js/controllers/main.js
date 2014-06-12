@@ -13,10 +13,10 @@ angular.module('PassMeNot.controllers.main', [])
               $scope.aims = JSON.parse(atob($routeParams.aims))
           }
 
-          if (Store.has('subjects') && Store.valid('subjects') && !$scope.sharedGrades)
-              $scope.subjects = Store.get('subjects')
-          if (Store.has('aims') && Store.valid('aims') && !$scope.sharedGrades)
-              $scope.aims = Store.get('aims')
+          if (Store.has('subjects') && Store.valid('subjects') && !$scope.sharedGrades) $scope.subjects = Store.get('subjects')
+          else $scope.subjects = []
+          if (Store.has('aims') && Store.valid('aims') && !$scope.sharedGrades) $scope.aims = Store.get('aims')
+          else $scope.aims = []
       }
 
       $scope.shareUrl = function () {
