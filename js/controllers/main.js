@@ -1,16 +1,27 @@
 angular.module('PassMeNot.controllers.main', [])
 
-  .controller('MainCtrl', ['$scope', '$routeParams', 'Store', function ($scope, $routeParams, Store) {
+  .controller('MainCtrl', ['$scope', '$routeParams', 'Store', '$timeout', 'Share',
+        function ($scope, $routeParams, Store, $timeout, Share) {
 
-	  $scope.identity = angular.identity
-	  $scope.subject = { }
+	  $scope.identity = angular.identity;
+	  $scope.subject = {};
+      $scope.sharedGrades = Share.isShared();
 
-	  $scope.initialize = function() {
-		  if (Store.has('subjects') && Store.valid('subjects')) $scope.subjects = Store.get('subjects')
-		  else $scope.subjects = [ ]
-		  if (Store.has('aims') && Store.valid('aims')) $scope.aims = Store.get('aims')
-		  else $scope.aims = [40]
-	  }
+      $scope.initialize = function () {
+          if ($scope.sharedGrades) {
+              $scope.subjects = JSON.parse(atob($routeParams.subjects))
+              $scope.aims = JSON.parse(atob($routeParams.aims))
+          }
+
+          if (Store.has('subjects') && Store.valid('subjects') && !$scope.sharedGrades)
+              $scope.subjects = Store.get('subjects')
+          if (Store.has('aims') && Store.valid('aims') && !$scope.sharedGrades)
+              $scope.aims = Store.get('aims')
+      }
+
+      $scope.shareUrl = function () {
+          return Share.url();
+      }
 
 	  $scope.add = function() {
 		  var pos = indexOf($scope.subject.name)
@@ -55,13 +66,17 @@ angular.module('PassMeNot.controllers.main', [])
 	  }
 
 	  $scope.$watch('subjects', function() {
-		  var subjects = angular.copy($scope.subjects)
-		  Store.set('subjects', subjects)
+          if (!$routeParams.aims && !$routeParams.subjects) {
+              var subjects = angular.copy($scope.subjects)
+              Store.set('subjects', subjects)
+          }
 	  }, true)
 
 	  $scope.$watch('aims', function() {
-		  var aims= angular.copy($scope.aims)
-		  Store.set('aims', aims)
+          if (!$routeParams.aims && !$routeParams.subjects) {
+              var aims = angular.copy($scope.aims)
+              Store.set('aims', aims)
+          }
 	  }, true)
 
 	  var indexOf = function(name){
@@ -70,14 +85,6 @@ angular.module('PassMeNot.controllers.main', [])
 				  return key
 		  }
 		  return false
-	  }
-
-	  if ($routeParams.subjects && Store.valid('subjects', $routeParams.subjects
-		&& $routeParams.aims && Store.valid('aims', $routeParams.aims))) {
-		  var subjects = JSON.parse(atob($routeParams.subjects))
-		  var aims= JSON.parse(atob($routeParams.aims))
-		  Store.set('subjects', subjects)
-		  Store.set('aims', aims)
 	  }
 
 	  $scope.initialize()
