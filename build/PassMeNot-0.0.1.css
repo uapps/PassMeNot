@@ -7480,30 +7480,30 @@ ul.list-unstyled .page-header > h1 {
 }
 .form-box {
   margin-bottom: 20px;
-  -webkit-transition: 250ms linear -webkit-transfrom -moz-transform -ms-transform -o-transform transform;
-  -moz-transition: 250ms linear -webkit-transfrom -moz-transform -ms-transform -o-transform transform;
-  -ms-transition: 250ms linear -webkit-transfrom -moz-transform -ms-transform -o-transform transform;
-  -o-transition: 250ms linear -webkit-transfrom -moz-transform -ms-transform -o-transform transform;
-  transition: 250ms linear -webkit-transfrom -moz-transform -ms-transform -o-transform transform;
+  -webkit-transition: 250ms linear all;
+  -moz-transition: 250ms linear all;
+  -ms-transition: 250ms linear all;
+  -o-transition: 250ms linear all;
+  transition: 250ms linear all;
 }
 .form-box.flip {
-  -webkit-transition: 250ms linear -webkit-transfrom -moz-transform -ms-transform -o-transform transform;
-  -moz-transition: 250ms linear -webkit-transfrom -moz-transform -ms-transform -o-transform transform;
-  -ms-transition: 250ms linear -webkit-transfrom -moz-transform -ms-transform -o-transform transform;
-  -o-transition: 250ms linear -webkit-transfrom -moz-transform -ms-transform -o-transform transform;
-  transition: 250ms linear -webkit-transfrom -moz-transform -ms-transform -o-transform transform;
-  -webkit-transform: rotateY(90deg);
-  -moz-transform: rotateY(90deg);
-  -ms-transform: rotateY(90deg);
-  -o-transform: rotateY(90deg);
-  transform: rotateY(90deg);
+  -webkit-transition: 250ms linear all;
+  -moz-transition: 250ms linear all;
+  -ms-transition: 250ms linear all;
+  -o-transition: 250ms linear all;
+  transition: 250ms linear all;
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  -ms-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+  transform: rotateY(180deg);
 }
 .form-box.flip.flip-back {
-  -webkit-transition: 250ms linear -webkit-transfrom -moz-transform -ms-transform -o-transform transform;
-  -moz-transition: 250ms linear -webkit-transfrom -moz-transform -ms-transform -o-transform transform;
-  -ms-transition: 250ms linear -webkit-transfrom -moz-transform -ms-transform -o-transform transform;
-  -o-transition: 250ms linear -webkit-transfrom -moz-transform -ms-transform -o-transform transform;
-  transition: 250ms linear -webkit-transfrom -moz-transform -ms-transform -o-transform transform;
+  -webkit-transition: 250ms linear all;
+  -moz-transition: 250ms linear all;
+  -ms-transition: 250ms linear all;
+  -o-transition: 250ms linear all;
+  transition: 250ms linear all;
   -webkit-transform: rotateY(0deg);
   -moz-transform: rotateY(0deg);
   -ms-transform: rotateY(0deg);
@@ -7522,6 +7522,12 @@ ul.list-unstyled .page-header > h1 {
   letter-spacing: 1px;
   font-size: 1.5em;
   position: relative;
+}
+.btn:active {
+  box-shadow: inset 5px 1px 6px rgba(0, 0, 0, 0.125);
+}
+.btn:active > span {
+  box-shadow: inset -5px 1px 6px rgba(0, 0, 0, 0.125);
 }
 .btn.btn-success {
   background: #5cb85c;

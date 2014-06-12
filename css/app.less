@@ -132,15 +132,14 @@ ul {
 
 .form-box {
   margin-bottom: 20px;
-  .transition(250ms linear -webkit-transfrom -moz-transform -ms-transform -o-transform transform);
+  .transition(250ms linear all);
 
   &.flip {
-    .transition(250ms linear -webkit-transfrom -moz-transform -ms-transform -o-transform transform);
-    .transform(rotateY(90deg));
-
+    .transition(250ms linear all);
+    .transform(rotateY(180deg));
 
     &.flip-back {
-      .transition(250ms linear -webkit-transfrom -moz-transform -ms-transform -o-transform transform);
+      .transition(250ms linear all);
       .transform(rotateY(0deg));
     }
   }
@@ -154,6 +153,11 @@ ul {
   letter-spacing: 1px;
   font-size: 1.5em;
   position: relative;
+
+  &:active {
+    box-shadow: inset 5px 1px 6px rgba(0,0,0,.125);
+    > span {box-shadow: inset -5px 1px 6px rgba(0,0,0,.125);}
+  }
 
   &.btn-success {
     background: @success;

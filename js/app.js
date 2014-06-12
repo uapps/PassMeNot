@@ -1,3 +1,5 @@
+'use strict'
+
 angular.module('PassMeNot', ['ngRoute', 'ngAnimate', 'ui.bootstrap'])
 
 	.config(['$routeProvider', function($routeProvider) {
@@ -22,7 +24,7 @@ angular.module('PassMeNot', ['ngRoute', 'ngAnimate', 'ui.bootstrap'])
                 localStorage[name] = null
             },
             valid: function(name, value) {
-                var valid;
+                var valid
                 try {
                     if (value) valid = JSON.parse(atob(value))
                     else valid = JSON.parse(atob(localStorage[name]))
@@ -37,21 +39,20 @@ angular.module('PassMeNot', ['ngRoute', 'ngAnimate', 'ui.bootstrap'])
 	.controller('Controller', ['$scope', '$routeParams', 'Store', function ($scope, $routeParams, Store) {
 
 		$scope.identity = angular.identity
+	  	$scope.subject = { }
 
 		$scope.initialize = function() {
 			if (Store.has('subjects') && Store.valid('subjects')) $scope.subjects = Store.get('subjects')
-			else $scope.subjects = []
+			else $scope.subjects = [ ]
             if (Store.has('aims') && Store.valid('aims')) $scope.aims = Store.get('aims')
             else $scope.aims = [40]
-
 		}
 
-		$scope.add = function(){
+		$scope.add = function() {
 			var pos = indexOf($scope.subject.name)
 			if(pos) $scope.subjects[pos] = angular.copy($scope.subject)
 			else $scope.subjects.push(angular.copy($scope.subject))
-			$scope.subject = {}
-			$scope.addSubject.$setPristine()
+			$scope.subject = { }
 		}
 
 		$scope.remove = function(name){
@@ -92,14 +93,14 @@ angular.module('PassMeNot', ['ngRoute', 'ngAnimate', 'ui.bootstrap'])
 		$scope.$watch('subjects', function() {
             var subjects = angular.copy($scope.subjects)
 			Store.set('subjects', subjects)
-		}, true);
+		}, true)
 
         $scope.$watch('aims', function() {
             var aims= angular.copy($scope.aims)
             Store.set('aims', aims)
-        }, true);
+        }, true)
 
-		indexOf = function(name){
+		var indexOf = function(name){
 			for(var key in $scope.subjects){
 				if($scope.subjects[key].name == name)
 					return key
@@ -149,5 +150,55 @@ angular.module('PassMeNot', ['ngRoute', 'ngAnimate', 'ui.bootstrap'])
 				})
 
 			}
-		};
+		}
 	}])
+
+	.directive('tiles', [ '$timeout', function($timeout) {
+	  	return {
+			restrict: 'E',
+			scope: true,
+			transclude: true,
+			replace: true,
+			controller: [ '$scope', '$element', function($scope, $element) {
+				var MAX_TILES = 2
+				$scope.flipped = false
+				var tiles = $scope.tiles = [ ]
+				this.addTile = function(tile) {
+					if (tiles.length == MAX_TILES) return
+					if (tiles.length == 0) tile.selected = true
+					tiles.push(tile)
+				}
+				$scope.toggleTiles = function() {
+					angular.forEach($scope.tiles, function(tile) {
+						tile.selected = !tile.selected
+					})
+				}
+				$scope.toggle = function() {
+					var element = angular.element($element).addClass('flip')
+					$timeout(function() {
+						$timeout(function() {element.removeClass('flip flip-back')}, 125)
+						$scope.flipped = !$scope.flipped
+						$scope.toggleTiles()
+						element.addClass('flip-back')
+					}, 125)
+				}
+			}],
+			template: '<div class="form-box" ><div ng-transclude></div>' +
+			  '<!--<button class="btn btn-info btn-block" ng-click="toggle()">Share <span><i class="fa fa-share"></i></span></button>--></div>'
+		}
+  	}])
+
+	.directive('tile', [function() {
+	  	return {
+			restrict: 'E',
+			require: '^tiles',
+			transclude: true,
+			scope: true,
+			replace: true,
+			link: function(scope, element, attrs, tilesCtrl) {
+				scope.selected = false
+				tilesCtrl.addTile(scope)
+			},
+			template: '<div ng-class="{hide:!selected}" ng-transclude></div>'
+		}
+  	}])

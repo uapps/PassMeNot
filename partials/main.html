@@ -6,35 +6,42 @@
 			</div>
             <div>
 				<div class="row" style="margin-top: 20px;">
-					<div class="col-lg-4 form-box" id="formBox" ng-class="{ true : 'flip' }[shareMode]">
-						<form class="form-horizontal add-subject" role="form" name="addSubject" ng-submit="add()" novalidate>
-							<div class="form-group" ng-class="{ 'has-error' : addSubject.name.$invalid && !addSubject.name.$pristine }">
-								<div class="col-sm-12">
-									<input id="name" type="text" name="name" placeholder="Module Name" ng-model="subject.name" class="form-control" required />
-								</div>
+					<div class="col-lg-4">
+						<tiles>
+							<tile>
+								<form class="form-horizontal add-subject" role="form" name="addSubject" ng-submit="add();addSubject.$setPristine()" novalidate>
+									<div class="form-group" ng-class="{ 'has-error' : addSubject.name.$invalid && !addSubject.name.$pristine }">
+										<div class="col-sm-12">
+											<input id="name" type="text" name="name" placeholder="Module Name" ng-model="subject.name" class="form-control" required />
+										</div>
 
-							</div>
-							<div class="form-group" ng-class="{ 'has-error' : addSubject.caWeight.$invalid && !addSubject.caWeight.$pristine }">
-								<div class="col-sm-12">
-									<input id="caWeight" type="number" name="caWeight" class="form-control" placeholder="CA Weight (%)" ng-model="subject.caWeight" min="0" max="99" required  />
-									<span ng-show="addSubject.caWeight.$error.max" class="help-block">Weight too large.</span>
-									<span ng-show="addSubject.caWeight.$error.min" class="help-block">Weight too small.</span>
-								</div>
-							</div>
-							<div class="form-group" ng-class="{ 'has-error' : addSubject.caMark.$invalid && !addSubject.caMark.$pristine }">
-								<div class="col-sm-12">
-									<input id="caMark" type="number" name="caMark" class="form-control" placeholder="CA Mark (%)" ng-model="subject.caMark" min="0" max="100" required ca-mark-validate ca-weight="subject.caWeight" />
-									<span ng-show="addSubject.caMark.$error.max" class="help-block">Percentage too large</span>
-									<span ng-show="addSubject.caMark.$error.min" class="help-block">Percentage too small</span>
-									<span ng-show="addSubject.caMark.$error.maxMark" class="help-block">CA Mark must be less than CA Weight</span>
-								</div>
-							</div>
-							<div class="form-group">
-								<div class="col-sm-12">
-									<button type="submit" class="btn btn-success btn-block" ng-disabled="addSubject.$invalid">Add Subject <span><i class="fa fa-plus"></i></span></button>
-								</div>
-							</div>
-						</form>
+									</div>
+									<div class="form-group" ng-class="{ 'has-error' : addSubject.caWeight.$invalid && !addSubject.caWeight.$pristine }">
+										<div class="col-sm-12">
+											<input id="caWeight" type="number" name="caWeight" class="form-control" placeholder="CA Weight (%)" ng-model="subject.caWeight" min="0" max="99" required  />
+											<span ng-show="addSubject.caWeight.$error.max" class="help-block">Weight too large.</span>
+											<span ng-show="addSubject.caWeight.$error.min" class="help-block">Weight too small.</span>
+										</div>
+									</div>
+									<div class="form-group" ng-class="{ 'has-error' : addSubject.caMark.$invalid && !addSubject.caMark.$pristine }">
+										<div class="col-sm-12">
+											<input id="caMark" type="number" name="caMark" class="form-control" placeholder="CA Mark (%)" ng-model="subject.caMark" min="0" max="100" required ca-mark-validate ca-weight="subject.caWeight" />
+											<span ng-show="addSubject.caMark.$error.max" class="help-block">Percentage too large</span>
+											<span ng-show="addSubject.caMark.$error.min" class="help-block">Percentage too small</span>
+											<span ng-show="addSubject.caMark.$error.maxMark" class="help-block">CA Mark must be less than CA Weight</span>
+										</div>
+									</div>
+									<div class="form-group">
+										<div class="col-sm-12">
+											<button type="submit" class="btn btn-success btn-block" ng-disabled="addSubject.$invalid">Add Subject <span><i class="fa fa-plus"></i></span></button>
+										</div>
+									</div>
+								</form>
+							</tile>
+							<tile>
+								<h3>kjshdfuh</h3>
+							</tile>
+						</tiles>
 					</div>
 					<div class="col-lg-8">
 						<hr class="visible-xs visible-sm visible-md">
