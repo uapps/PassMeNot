@@ -1,7 +1,7 @@
 angular.module('PassMeNot.controllers.main', [])
 
-  .controller('MainCtrl', ['$scope', '$routeParams', 'Store', '$timeout', 'Share',
-        function ($scope, $routeParams, Store, $timeout, Share) {
+  .controller('MainCtrl', ['$scope', '$routeParams', 'Store', 'Share',
+        function ($scope, $routeParams, Store, Share) {
 
 	  $scope.identity = angular.identity;
 	  $scope.subject = {};
