@@ -126,6 +126,16 @@ ul.list-unstyled .page-header > h1 {
   -o-transform: rotateY(0deg);
   transform: rotateY(0deg);
 }
+.form-box .share > h3 {
+  margin-top: 0;
+  font-weight: 100;
+}
+.form-box .share > pre {
+  background: #F9F9F9;
+  border: 0 solid transparent;
+  border-radius: 0;
+  box-shadow: 0 0 0 transparent;
+}
 .btn {
   -webkit-transition: 200ms linear background;
   -moz-transition: 200ms linear background;

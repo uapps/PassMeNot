@@ -3,7 +3,6 @@ angular.module('PassMeNot.directives.tiles', [])
   .directive('tiles', [ '$timeout', function($timeout) {
 	  return {
 		  restrict: 'E',
-		  scope: true,
 		  transclude: true,
 		  replace: true,
 		  controller: [ '$scope', '$element', function($scope, $element) {
@@ -30,8 +29,7 @@ angular.module('PassMeNot.directives.tiles', [])
 				  }, 125)
 			  }
 		  }],
-		  template: '<div class="form-box" ><div ng-transclude></div>' +
-			'<!--<button class="btn btn-info btn-block" ng-click="toggle()">Share <span><i class="fa fa-share"></i></span></button>--></div>'
+		  template: '<div class="form-box" ><div ng-transclude></div></div>'
 	  }
   }])
 
@@ -40,8 +38,12 @@ angular.module('PassMeNot.directives.tiles', [])
 		  restrict: 'E',
 		  require: '^tiles',
 		  transclude: true,
-		  scope: true,
+		  scope: {
+              'toggle': '='
+          },
 		  replace: true,
+          controller: [ '$scope', function($scope) {
+          }],
 		  link: function(scope, element, attrs, tilesCtrl) {
 			  scope.selected = false
 			  tilesCtrl.addTile(scope)
