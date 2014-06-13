@@ -7,8 +7,8 @@
             <div>
 				<div class="row" style="margin-top: 20px;">
 					<div class="col-lg-4">
-						<tiles>
-							<tile>
+						<tiles toggle="toggle">
+							<tile toggle="toggle">
 								<form class="form-horizontal add-subject" role="form" name="addSubject" ng-submit="add();addSubject.$setPristine()" novalidate>
 									<div class="form-group" ng-class="{ 'has-error' : addSubject.name.$invalid && !addSubject.name.$pristine }">
 										<div class="col-sm-12">
@@ -36,10 +36,25 @@
 											<button type="submit" class="btn btn-success btn-block" ng-disabled="addSubject.$invalid">Add Subject <span><i class="fa fa-plus"></i></span></button>
 										</div>
 									</div>
+									<div class="form-group">
+										<div class="col-sm-12">
+											<button type="button" class="btn btn-info btn-block" ng-click="toggle()">Share <span><i class="fa fa-share"></i></span></button>
+										</div>
+									</div>
 								</form>
 							</tile>
-							<tile>
-								<h3>kjshdfuh</h3>
+							<tile toggle="toggle">
+								<div class="share">
+									<h3>Share your results:</h3>
+									<pre>{{shareUrl()}}</pre>
+									<form class="form-horizontal" role="form" ng-submit="" novalidate>
+										<div class="form-group">
+											<div class="col-sm-12">
+												<button type="button" class="btn btn-warning btn-block" ng-click="toggle()">Back <span><i class="fa fa-arrow-circle-left"></i></span></button>
+											</div>
+										</div>
+									</form>
+								</div>
 							</tile>
 						</tiles>
 					</div>

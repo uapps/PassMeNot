@@ -4,7 +4,7 @@ module.exports = function (grunt) {
         less: {
             pass_me_not: {
                 files: {
-                    'css/application.css': ["css/app.less"]
+                    'css/application.css': ["css/application.less"]
                 }
             }
         },
