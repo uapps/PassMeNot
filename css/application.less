@@ -133,11 +133,11 @@ ul {
 
   &.flip {
     .transition(250ms linear all);
-    .transform(rotateY(180deg));
+    .transform(rotateY(180deg) scale(1.5,1.5));
 
     &.flip-back {
       .transition(250ms linear all);
-      .transform(rotateY(0deg));
+      .transform(rotateY(0deg) scale(1,1));
     }
   }
 
@@ -151,6 +151,30 @@ ul {
       border: 0 solid transparent;
       border-radius: 0;
       box-shadow: 0 0 0 transparent;
+    }
+  }
+}
+
+.input-group {
+  > span.input-group-addon {
+    background: #EEEFF0;
+    border-bottom-right-radius: 0px !important;
+    border-top-right-radius: 0px !important;
+    border: 1px solid transparent;
+    &:hover {background: #EEEFF0;}
+
+    &.aim {
+      .transition(200ms linear background);
+      background: @info;
+
+      &:hover {
+        .transition(200ms linear background);
+        background: darken(@info, 5%);
+      }
+
+      a > {
+        color: white;
+      }
     }
   }
 }
@@ -239,20 +263,7 @@ input[type=number] {
 }
 
 span.input-group-addon {
-  .transition(200ms linear background);
-  border-bottom-right-radius: 0px !important;
-  border-top-right-radius: 0px !important;
-  border: 1px solid transparent;
-  background: @info;
 
-  &:hover {
-    .transition(200ms linear background);
-    background: darken(@info, 5%);
-  }
-
-  a > {
-    color: white;
-  }
 }
 
 ::-webkit-input-placeholder {

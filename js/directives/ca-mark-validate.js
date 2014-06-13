@@ -5,7 +5,8 @@ angular.module('PassMeNot.directives.caMarkValidate', [])
 		  restrict: 'A',
 		  require: 'ngModel',
 		  scope: {
-			  "caWeight": "="
+			  "caWeight": "=",
+              "outOfWeight": "="
 		  },
 		  link: function (scope, iElement, iAttrs, ctrl) {
 
@@ -14,8 +15,10 @@ angular.module('PassMeNot.directives.caMarkValidate', [])
 			  }
 
 			  var validMark = function(mark){
+                  var MAX = 100;
 				  if(mark == undefined) return true
-				  if(!isNumeric(mark) || scope.caWeight == undefined || mark > 100) return false
+                  if(scope.outOfWeight) MAX = scope.caWeight
+				  if(!isNumeric(mark) || scope.caWeight == undefined || mark > MAX) return false
 				  return true
 			  }
 

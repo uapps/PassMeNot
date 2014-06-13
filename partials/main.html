@@ -25,7 +25,12 @@
 									</div>
 									<div class="form-group" ng-class="{ 'has-error' : addSubject.caMark.$invalid && !addSubject.caMark.$pristine }">
 										<div class="col-sm-12">
-											<input id="caMark" type="number" name="caMark" class="form-control" placeholder="CA Mark (%)" ng-model="subject.caMark" min="0" max="100" required ca-mark-validate ca-weight="subject.caWeight" />
+											<div class="input-group">
+												<input id="caMark" type="number" name="caMark" class="form-control" placeholder="CA Mark (%)" ng-model="subject.caMark" min="0" max="100" required ca-mark-validate ca-weight="subject.caWeight" out-of-weight="subject.outOfWeight" />
+												<span class="input-group-addon">
+													<input type="checkbox" ng-model="subject.outOfWeight">
+												</span>
+											</div>
 											<span ng-show="addSubject.caMark.$error.max" class="help-block">Percentage too large</span>
 											<span ng-show="addSubject.caMark.$error.min" class="help-block">Percentage too small</span>
 											<span ng-show="addSubject.caMark.$error.maxMark" class="help-block">CA Mark must be less than CA Weight</span>
@@ -96,7 +101,7 @@
 															<form name="addAimForm" ng-submit="addAim();newAim=''">
 																<div class="input-group aim" ng-class="{ 'has-error' : addAimForm.newAim.$invalid && !addAimForm.newAim.$pristine }">
 																	<input name="newAim" type="number" min="1" max="100" class="form-control input-sm aim" ng-model="newAim" required>
-																	<span class="input-group-addon">
+																	<span class="input-group-addon aim">
                                                                         <a href="#" ng-click="addAim();newAim=''"><i class="fa fa-plus"></i></a>
                                                                     </span>
 																</div>

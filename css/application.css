@@ -108,11 +108,11 @@ ul.list-unstyled .page-header > h1 {
   -ms-transition: 250ms linear all;
   -o-transition: 250ms linear all;
   transition: 250ms linear all;
-  -webkit-transform: rotateY(180deg);
-  -moz-transform: rotateY(180deg);
-  -ms-transform: rotateY(180deg);
-  -o-transform: rotateY(180deg);
-  transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg) scale(1.5, 1.5);
+  -moz-transform: rotateY(180deg) scale(1.5, 1.5);
+  -ms-transform: rotateY(180deg) scale(1.5, 1.5);
+  -o-transform: rotateY(180deg) scale(1.5, 1.5);
+  transform: rotateY(180deg) scale(1.5, 1.5);
 }
 .form-box.flip.flip-back {
   -webkit-transition: 250ms linear all;
@@ -120,11 +120,11 @@ ul.list-unstyled .page-header > h1 {
   -ms-transition: 250ms linear all;
   -o-transition: 250ms linear all;
   transition: 250ms linear all;
-  -webkit-transform: rotateY(0deg);
-  -moz-transform: rotateY(0deg);
-  -ms-transform: rotateY(0deg);
-  -o-transform: rotateY(0deg);
-  transform: rotateY(0deg);
+  -webkit-transform: rotateY(0deg) scale(1, 1);
+  -moz-transform: rotateY(0deg) scale(1, 1);
+  -ms-transform: rotateY(0deg) scale(1, 1);
+  -o-transform: rotateY(0deg) scale(1, 1);
+  transform: rotateY(0deg) scale(1, 1);
 }
 .form-box .share > h3 {
   margin-top: 0;
@@ -135,6 +135,34 @@ ul.list-unstyled .page-header > h1 {
   border: 0 solid transparent;
   border-radius: 0;
   box-shadow: 0 0 0 transparent;
+}
+.input-group > span.input-group-addon {
+  background: #EEEFF0;
+  border-bottom-right-radius: 0px !important;
+  border-top-right-radius: 0px !important;
+  border: 1px solid transparent;
+}
+.input-group > span.input-group-addon:hover {
+  background: #EEEFF0;
+}
+.input-group > span.input-group-addon.aim {
+  -webkit-transition: 200ms linear background;
+  -moz-transition: 200ms linear background;
+  -ms-transition: 200ms linear background;
+  -o-transition: 200ms linear background;
+  transition: 200ms linear background;
+  background: #5bc0de;
+}
+.input-group > span.input-group-addon.aim:hover {
+  -webkit-transition: 200ms linear background;
+  -moz-transition: 200ms linear background;
+  -ms-transition: 200ms linear background;
+  -o-transition: 200ms linear background;
+  transition: 200ms linear background;
+  background: #46b8da;
+}
+.input-group > span.input-group-addon.aim a {
+  color: white;
 }
 .btn {
   -webkit-transition: 200ms linear background;
@@ -249,28 +277,6 @@ input[type=text].aim,
 input[type=number].aim {
   background: white;
   margin: 0 auto;
-}
-span.input-group-addon {
-  -webkit-transition: 200ms linear background;
-  -moz-transition: 200ms linear background;
-  -ms-transition: 200ms linear background;
-  -o-transition: 200ms linear background;
-  transition: 200ms linear background;
-  border-bottom-right-radius: 0px !important;
-  border-top-right-radius: 0px !important;
-  border: 1px solid transparent;
-  background: #5bc0de;
-}
-span.input-group-addon:hover {
-  -webkit-transition: 200ms linear background;
-  -moz-transition: 200ms linear background;
-  -ms-transition: 200ms linear background;
-  -o-transition: 200ms linear background;
-  transition: 200ms linear background;
-  background: #46b8da;
-}
-span.input-group-addon a {
-  color: white;
 }
 ::-webkit-input-placeholder {
   color: #999999 !important;
