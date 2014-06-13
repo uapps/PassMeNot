@@ -1,18 +1,29 @@
 angular.module('PassMeNot.controllers.main', [])
 
-  .controller('MainCtrl', ['$scope', '$routeParams', 'Store', 'Share',
-      function ($scope, $routeParams, Store, Share) {
+  .controller('MainCtrl', ['$scope', '$routeParams', 'Store', 'Share', '$timeout', '$location',
+      function ($scope, $routeParams, Store, Share, $timeout, $location) {
 
-          $scope.identity = angular.identity
+          $scope.subjects = [ ]
+          $scope.aims = [ ]
           $scope.subject = { }
+          $scope.identity = angular.identity
           $scope.sharedGrades = Share.isShared()
 
           $scope.initialize = function () {
               if ($scope.sharedGrades) {
-                  $scope.subjects = JSON.parse(atob($routeParams.subjects))
-                  $scope.aims = JSON.parse(atob($routeParams.aims))
+                  $timeout(function() {
+                      try {
+                          $scope.subjects = JSON.parse(atob($routeParams.subjects))
+                          $scope.aims = JSON.parse(atob($routeParams.aims))
+                      } catch(e) {
+                          $location.path('/')
+                      }
+                  }, 10)
               }
+              $scope.restore()
+          }
 
+          $scope.restore = function() {
               if (Store.has('subjects') && Store.valid('subjects') && !$scope.sharedGrades) $scope.subjects = Store.get('subjects')
               else $scope.subjects = []
               if (Store.has('aims') && Store.valid('aims') && !$scope.sharedGrades) $scope.aims = Store.get('aims')
