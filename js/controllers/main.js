@@ -23,6 +23,10 @@ angular.module('PassMeNot.controllers.main', [])
               $scope.restore()
           }
 
+          $scope.backToResults = function() {
+              $location.path('/')
+          }
+
           $scope.restore = function() {
               if (Store.has('subjects') && Store.valid('subjects') && !$scope.sharedGrades) $scope.subjects = Store.get('subjects')
               else $scope.subjects = []
