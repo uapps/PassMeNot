@@ -11,6 +11,10 @@
 		"grunt-contrib-concat": "~0.3.0",
 		"grunt-contrib-less": "~0.9.0",
 		"grunt-contrib-watch": "~0.5.1",
-		"grunt-contrib-cssmin": "~0.9.0"
+		"grunt-contrib-cssmin": "~0.9.0",
+        "karma": "~0.12.16",
+        "karma-jasmine": "~0.1.5",
+        "karma-phantomjs-launcher": "~0.1.4",
+        "jasmine-expect": "~1.21.0"
 	}
 }
