@@ -103,5 +103,11 @@ angular.module('PassMeNot.controllers.main', [])
               return false
           }
 
+          $scope.addFromShare = function(subject) {
+            var subjects = Store.has('subjects') ? Store.get('subjects') : []
+            subjects.push(subject)
+            Store.set('subjects', subjects)
+          }
+
           $scope.initialize()
       }])

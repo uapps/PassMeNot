@@ -81,7 +81,10 @@
 							<li ng-repeat="subject in subjects">
 								<div class="row">
 									<div class="col-lg-12">
-										<h1><strong>{{subject.name}}</strong> <a href="javascript:void(0)" ng-if="!sharedGrades" class="pull-right text-danger" ng-click="remove(subject.name)"><i class="fa fa-times"></i></a></h1>
+										<h1><strong>{{subject.name}}</strong>
+                                            <a href="javascript:void(0)" ng-if="!sharedGrades" class="pull-right text-danger" ng-click="remove(subject.name)"><i class="fa fa-times"></i></a>
+                                            <a href="javascript:void(0)" ng-if="sharedGrades" class="pull-right text-success" was-shared="" ng-click="addFromShare(subject)"><i class="fa fa-plus"></i></a>
+                                        </h1>
 										<div class="row">
 											<div class="col-lg-4">
 												<div class="row text-center">
@@ -116,7 +119,8 @@
 														</th>
 													</tr>
 													<tr>
-														<td ng-if="aims.length == 0"><p>You have not defined any Aims</p></td>
+                                                        <td ng-if="aims.length == 0 && sharedGrades"><p>There are no Aims defined for these grades.</p></td>
+														<td ng-if="aims.length == 0 && !sharedGrades"><p>You have not defined any Aims</p></td>
 														<td ng-repeat="aim in aims | orderBy:identity">{{calculateExamMark(aim, subject)}} %</td>
 														<td ng-if="!acceptsMoreAims() && !sharedGrades"></td>
 													</tr>
