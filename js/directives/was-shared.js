@@ -1,4 +1,4 @@
-angular.module('PassMeNot.directives.was-shared', [])
+angular.module('PassMeNot.directives.wasShared', [])
 
     .directive('wasShared', [function () {
         return {

@@ -1,5 +1,5 @@
 angular.module('PassMeNot.directives', [
 	'PassMeNot.directives.caMarkValidate',
 	'PassMeNot.directives.tiles',
-    'PassMeNot.directives.was-shared'
+    'PassMeNot.directives.wasShared'
 ]);
