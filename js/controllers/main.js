@@ -82,14 +82,14 @@ angular.module('PassMeNot.controllers.main', [])
           }
 
           $scope.$watch('subjects', function() {
-              if (!$routeParams.aims && !$routeParams.subjects) {
+              if (!$scope.sharedGrades) {
                   var subjects = angular.copy($scope.subjects)
                   Store.set('subjects', subjects)
               }
           }, true)
 
           $scope.$watch('aims', function() {
-              if (!$routeParams.aims && !$routeParams.subjects) {
+              if (!$scope.sharedGrades) {
                   var aims = angular.copy($scope.aims)
                   Store.set('aims', aims)
               }
