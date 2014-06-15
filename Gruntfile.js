@@ -8,6 +8,11 @@ module.exports = function (grunt) {
                 }
             }
         },
+        karma: {
+            unit: {
+                configFile: 'karma.conf.js'
+            }
+        },
         watch: {
             css: {
                 files: ['css/**/*.less'],
@@ -17,6 +22,7 @@ module.exports = function (grunt) {
     });
 
     grunt.loadNpmTasks('grunt-contrib-less');
+    grunt.loadNpmTasks('grunt-karma');
     grunt.loadNpmTasks('grunt-contrib-watch');
 
     grunt.registerTask('build', ['less']);
