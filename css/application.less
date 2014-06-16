@@ -29,6 +29,21 @@ ul {
       position: relative;
       .transition(400ms ease-in all);
 
+      h1 {
+        > a {
+          i {
+            .transition(200ms linear all);
+            color: #ddd;
+          }
+          &:hover {
+            i {
+              .transition(200ms linear all);
+              color: darken(#ddd, 10%);
+            }
+          }
+        }
+      }
+
       &.ng-enter {
         opacity: 0;
         .transform(rotateX(180deg) rotateY(180deg) translatez(0px));
@@ -67,6 +82,18 @@ ul {
           th {
             vertical-align: middle;
             border-top: 0px solid transparent;
+            > a {
+              i {
+                .transition(200ms linear all);
+                color: #ddd;
+              }
+              &:hover {
+                i {
+                  .transition(200ms linear all);
+                  color: darken(#ddd, 10%);
+                }
+              }
+            }
           }
         }
       }

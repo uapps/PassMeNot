@@ -9,6 +9,22 @@ ul.subjects > li {
   -o-transition: 400ms ease-in all;
   transition: 400ms ease-in all;
 }
+ul.subjects > li h1 > a i {
+  -webkit-transition: 200ms linear all;
+  -moz-transition: 200ms linear all;
+  -ms-transition: 200ms linear all;
+  -o-transition: 200ms linear all;
+  transition: 200ms linear all;
+  color: #ddd;
+}
+ul.subjects > li h1 > a:hover i {
+  -webkit-transition: 200ms linear all;
+  -moz-transition: 200ms linear all;
+  -ms-transition: 200ms linear all;
+  -o-transition: 200ms linear all;
+  transition: 200ms linear all;
+  color: #c4c4c4;
+}
 ul.subjects > li.ng-enter {
   opacity: 0;
   -webkit-transform: rotateX(180deg) rotateY(180deg) translatez(0px);
@@ -54,6 +70,22 @@ ul.subjects > li p {
 ul.subjects > li table.table th {
   vertical-align: middle;
   border-top: 0px solid transparent;
+}
+ul.subjects > li table.table th > a i {
+  -webkit-transition: 200ms linear all;
+  -moz-transition: 200ms linear all;
+  -ms-transition: 200ms linear all;
+  -o-transition: 200ms linear all;
+  transition: 200ms linear all;
+  color: #ddd;
+}
+ul.subjects > li table.table th > a:hover i {
+  -webkit-transition: 200ms linear all;
+  -moz-transition: 200ms linear all;
+  -ms-transition: 200ms linear all;
+  -o-transition: 200ms linear all;
+  transition: 200ms linear all;
+  color: #c4c4c4;
 }
 ul.subjects > li h1 {
   font-weight: 100;
