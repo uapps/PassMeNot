@@ -262,8 +262,48 @@ input[type=number] {
   }
 }
 
-span.input-group-addon {
+.form-group {
+  position: relative;
+  &.has-error {
+    input[type=text],
+    input[type=number] {box-shadow: 0 0 0 transparent;}
+  }
 
+  div {
+    &.caret-top {
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      border-bottom: 8px solid lighten(@danger, 38%);
+      vertical-align: top;
+      height: 0;
+      width: 0;
+      margin: 0 auto;
+    }
+  }
+
+  span {
+    &.help-block {
+      margin: 0;
+      position: relative;
+      background: lighten(@danger, 38%);
+      padding: 6px 12px;
+
+      &.ng-hide-add,
+      &.ng-hide-remove {
+        .transition(100ms linear all);
+        display: block !important;
+      }
+
+      &.ng-hide-add {
+        opacity: 1;
+        &.ng-hide-add-active {opacity: 0;}
+      }
+      &.ng-hide-remove {
+        opacity: 0;
+        &.ng-hide-remove-active {opacity: 1;}
+      }
+    }
+  }
 }
 
 ::-webkit-input-placeholder {

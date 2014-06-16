@@ -13,14 +13,17 @@
 									<div class="form-group" ng-class="{ 'has-error' : addSubject.name.$invalid && !addSubject.name.$pristine }">
 										<div class="col-sm-12">
 											<input id="name" type="text" name="name" placeholder="Module Name" ng-model="subject.name" class="form-control" required />
+											<div class="caret-top" ng-show="addSubject.name.$error.required && addSubject.name.$invalid && !addSubject.name.$pristine"></div>
+											<span ng-show="addSubject.name.$error.required && addSubject.name.$invalid && !addSubject.name.$pristine" class="help-block"><i class="fa fa-exclamation-triangle"></i> A Module Name is required.</span>
 										</div>
 
 									</div>
 									<div class="form-group" ng-class="{ 'has-error' : addSubject.caWeight.$invalid && !addSubject.caWeight.$pristine }">
 										<div class="col-sm-12">
 											<input id="caWeight" type="number" name="caWeight" class="form-control" placeholder="CA Weight (%)" ng-model="subject.caWeight" min="0" max="99" required  />
-											<span ng-show="addSubject.caWeight.$error.max" class="help-block">Weight too large.</span>
-											<span ng-show="addSubject.caWeight.$error.min" class="help-block">Weight too small.</span>
+											<div class="caret-top" ng-show="addSubject.caWeight.$error.max || addSubject.caWeight.$error.min"></div>
+											<span ng-show="addSubject.caWeight.$error.max" class="help-block"><i class="fa fa-exclamation-triangle"></i> CA Weight too large.</span>
+											<span ng-show="addSubject.caWeight.$error.min" class="help-block"><i class="fa fa-exclamation-triangle"></i> CA Weight too small.</span>
 										</div>
 									</div>
 									<div class="form-group" ng-class="{ 'has-error' : addSubject.caMark.$invalid && !addSubject.caMark.$pristine }">
@@ -31,9 +34,14 @@
 													<input type="checkbox" ng-model="subject.outOfWeight">
 												</span>
 											</div>
-											<span ng-show="addSubject.caMark.$error.max" class="help-block">Percentage too large</span>
-											<span ng-show="addSubject.caMark.$error.min" class="help-block">Percentage too small</span>
-											<span ng-show="addSubject.caMark.$error.maxMark" class="help-block">CA Mark must be less than CA Weight</span>
+											<div class="caret-top" ng-show="addSubject.caMark.$error.max || addSubject.caMark.$error.min || addSubject.caMark.$error.maxMark"></div>
+											<span class="help-block" ng-show="addSubject.caMark.$error.max || addSubject.caMark.$error.min || addSubject.caMark.$error.maxMark">
+												<div ng-show="addSubject.caMark.$error.max"><i class="fa fa-exclamation-triangle"></i> CA Mark is too large.</div>
+												<div ng-show="addSubject.caMark.$error.min"><i class="fa fa-exclamation-triangle"></i> CA Mark is too small.</div>
+												<div ng-show="addSubject.caMark.$error.maxMark"><i class="fa fa-exclamation-triangle"></i> CA Mark must be less than CA Weight.</div>
+											</span>
+
+
 										</div>
 									</div>
 									<div class="form-group">

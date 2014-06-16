@@ -278,6 +278,49 @@ input[type=number].aim {
   background: white;
   margin: 0 auto;
 }
+.form-group {
+  position: relative;
+}
+.form-group.has-error input[type=text],
+.form-group.has-error input[type=number] {
+  box-shadow: 0 0 0 transparent;
+}
+.form-group div.caret-top {
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 8px solid #fbefee;
+  vertical-align: top;
+  height: 0;
+  width: 0;
+  margin: 0 auto;
+}
+.form-group span.help-block {
+  margin: 0;
+  position: relative;
+  background: #fbefee;
+  padding: 6px 12px;
+}
+.form-group span.help-block.ng-hide-add,
+.form-group span.help-block.ng-hide-remove {
+  -webkit-transition: 100ms linear all;
+  -moz-transition: 100ms linear all;
+  -ms-transition: 100ms linear all;
+  -o-transition: 100ms linear all;
+  transition: 100ms linear all;
+  display: block !important;
+}
+.form-group span.help-block.ng-hide-add {
+  opacity: 1;
+}
+.form-group span.help-block.ng-hide-add.ng-hide-add-active {
+  opacity: 0;
+}
+.form-group span.help-block.ng-hide-remove {
+  opacity: 0;
+}
+.form-group span.help-block.ng-hide-remove.ng-hide-remove-active {
+  opacity: 1;
+}
 ::-webkit-input-placeholder {
   color: #999999 !important;
   font-weight: 100;
