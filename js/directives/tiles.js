@@ -5,31 +5,33 @@ angular.module('PassMeNot.directives.tiles', [])
 		  restrict: 'E',
 		  transclude: true,
 		  replace: true,
+          scope: {
+              className: '@',
+              animation: '@',
+              toggle: '='
+          },
 		  controller: [ '$scope', '$element', function($scope, $element) {
-			  var MAX_TILES = 2
-			  $scope.flipped = false
 			  var tiles = $scope.tiles = [ ]
 			  this.addTile = function(tile) {
-				  if (tiles.length == MAX_TILES) return
 				  if (tiles.length == 0) tile.selected = true
 				  tiles.push(tile)
 			  }
-			  $scope.toggleTiles = function() {
+			  $scope.deselectTiles = function() {
 				  angular.forEach($scope.tiles, function(tile) {
-					  tile.selected = !tile.selected
+					  if (tile.selected) tile.selected = false
 				  })
 			  }
-			  $scope.toggle = function() {
-				  var element = angular.element($element).addClass('flip')
+			  $scope.toggle = function(index) {
+				  var element = angular.element($element).addClass($scope.animation)
 				  $timeout(function() {
-					  $timeout(function() {element.removeClass('flip flip-back')}, 125)
-					  $scope.flipped = !$scope.flipped
-					  $scope.toggleTiles()
-					  element.addClass('flip-back')
+					  $timeout(function() {element.removeClass($scope.animation + ' ' + $scope.animation + '-back')}, 125)
+					  $scope.deselectTiles()
+                      $scope.tiles[index].selected = true
+					  element.addClass($scope.animation + '-back')
 				  }, 125)
 			  }
 		  }],
-		  template: '<div class="form-box" ><div ng-transclude></div></div>'
+		  template: '<div class="{{className}}" ><div ng-transclude></div></div>'
 	  }
   }])
 
