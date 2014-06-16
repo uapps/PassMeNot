@@ -7,7 +7,7 @@
             <div>
 				<div class="row" style="margin-top: 20px;">
 					<div class="col-md-4">
-						<tiles toggle="toggle">
+						<tiles class-name="form-box" animation="flip" toggle="toggle">
 							<tile toggle="toggle">
 								<form ng-if="!sharedGrades" class="form-horizontal add-subject" role="form" name="addSubject" ng-submit="add();addSubject.$setPristine()" novalidate>
 									<div class="form-group" ng-class="{ 'has-error' : addSubject.name.$invalid && !addSubject.name.$pristine }">
@@ -43,7 +43,7 @@
 									</div>
 									<div class="form-group">
 										<div class="col-sm-12">
-											<button type="button" class="btn btn-info btn-block" ng-disabled="subjects == 0" ng-click="toggle()">Share <span><i class="fa fa-share"></i></span></button>
+											<button type="button" class="btn btn-info btn-block" ng-disabled="subjects == 0" ng-click="toggle(1)">Share <span><i class="fa fa-share"></i></span></button>
 										</div>
 									</div>
 								</form>
@@ -62,7 +62,7 @@
 									<form class="form-horizontal" role="form" ng-submit="" novalidate>
 										<div class="form-group">
 											<div class="col-sm-12">
-												<button type="button" class="btn btn-warning btn-block" ng-click="toggle()">Back <span><i class="fa fa-arrow-circle-left"></i></span></button>
+												<button type="button" class="btn btn-warning btn-block" ng-click="toggle(0)">Back <span><i class="fa fa-arrow-circle-left"></i></span></button>
 											</div>
 										</div>
 									</form>
