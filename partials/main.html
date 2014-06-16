@@ -31,7 +31,7 @@
 											<div class="input-group">
 												<input id="caMark" type="number" name="caMark" class="form-control" placeholder="CA Mark (%)" ng-model="subject.caMark" min="0" max="100" required ca-mark-validate ca-weight="subject.caWeight" out-of-weight="subject.outOfWeight" />
 												<span class="input-group-addon">
-													<input type="checkbox" ng-model="subject.outOfWeight">
+													<input type="checkbox" ng-model="subject.outOfWeight" tooltip="Out of CA Weight" tooltip-placement="left" tooltip-trigger="click">
 												</span>
 											</div>
 											<div class="caret-top" ng-show="addSubject.caMark.$error.max || addSubject.caMark.$error.min || addSubject.caMark.$error.maxMark"></div>

@@ -5,7 +5,8 @@ angular.module('PassMeNot', [
 	'ngAnimate',
 	'PassMeNot.controllers',
 	'PassMeNot.services',
-	'PassMeNot.directives'
+	'PassMeNot.directives',
+    'ui.bootstrap'
 ])
 	.config(['$routeProvider', function($routeProvider) {
 		$routeProvider
