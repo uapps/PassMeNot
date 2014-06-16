@@ -24,6 +24,8 @@ angular.module('PassMeNot.controllers.main', [])
               $scope.restore()
           }
 
+          $scope.toggle = function() {}
+
           $scope.backToResults = function() {
               $location.path('/')
           }
