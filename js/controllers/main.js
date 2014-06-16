@@ -43,7 +43,7 @@ angular.module('PassMeNot.controllers.main', [])
               if ($scope.subject.outOfWeight) $scope.subject.caMark = parseInt((($scope.subject.caMark / $scope.subject.caWeight) * 100).toFixed(0))
               var pos = indexOf($scope.subject.name)
               if(pos) $scope.subjects[pos] = angular.copy($scope.subject)
-              else $scope.subjects.push(angular.copy($scope.subject))
+              else $scope.subjects.unshift(angular.copy($scope.subject))
               $scope.subject = { }
           }
 
