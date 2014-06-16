@@ -1,16 +1,25 @@
 {
-	"name": "PassMeNot",
-	"title": "pass-me-not",
-	"description": "Grade calculator",
-	"authors": ["vadimck", "tsov", "alankehoe"],
-	"homepage": "http://redbrick.dcu.ie/~vadimck/PassMeNot",
-	"version": "0.0.1",
-	"devDependencies": {
-		"grunt": "~0.4.2",
-		"grunt-contrib-uglify": "~0.2.2",
-		"grunt-contrib-concat": "~0.3.0",
-		"grunt-contrib-less": "~0.9.0",
-		"grunt-contrib-watch": "~0.5.1",
-		"grunt-contrib-cssmin": "~0.9.0"
-	}
+  "name": "PassMeNot",
+  "title": "pass-me-not",
+  "description": "Grade calculator",
+  "authors": [
+    "vadimck",
+    "tsov",
+    "alankehoe"
+  ],
+  "homepage": "https://uapps.github.io/PassMeNot",
+  "version": "0.0.1",
+  "devDependencies": {
+    "grunt": "~0.4.2",
+    "grunt-contrib-uglify": "~0.2.2",
+    "grunt-contrib-concat": "~0.3.0",
+    "grunt-contrib-less": "~0.9.0",
+    "grunt-contrib-watch": "~0.5.1",
+    "grunt-contrib-cssmin": "~0.9.0",
+    "karma": "~0.12.16",
+    "karma-jasmine": "~0.1.5",
+    "karma-phantomjs-launcher": "~0.1.4",
+    "jasmine-expect": "~1.21.0",
+    "grunt-karma": "~0.8.3"
+  }
 }

@@ -11,8 +11,8 @@ angular.module('PassMeNot.services.store', [])
 		  has: function(name) {
 			  return !!localStorage[name]
 		  },
-		  empty:function(name) {
-			  localStorage[name] = null
+		  empty: function(name) {
+              delete localStorage[name]
 		  },
 		  valid: function(name, value) {
 			  var valid
