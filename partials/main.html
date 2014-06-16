@@ -31,7 +31,7 @@
 											<div class="input-group">
 												<input id="caMark" type="number" name="caMark" class="form-control" placeholder="CA Mark (%)" ng-model="subject.caMark" min="0" max="100" required ca-mark-validate ca-weight="subject.caWeight" out-of-weight="subject.outOfWeight" />
 												<span class="input-group-addon">
-													<input type="checkbox" ng-model="subject.outOfWeight" tooltip="Out of CA Weight" tooltip-placement="left" tooltip-trigger="click">
+													<input type="checkbox" ng-model="subject.outOfWeight" tooltip="Out of CA Weight" tooltip-placement="left">
 												</span>
 											</div>
 											<div class="caret-top" ng-show="addSubject.caMark.$error.max || addSubject.caMark.$error.min || addSubject.caMark.$error.maxMark"></div>
@@ -118,7 +118,7 @@
 														<th ng-if="!acceptsMoreAims() && !sharedGrades">
 															<form name="addAimForm" ng-submit="addAim();newAim=''">
 																<div class="input-group aim" ng-class="{ 'has-error' : addAimForm.newAim.$invalid && !addAimForm.newAim.$pristine }">
-																	<input name="newAim" type="number" min="1" max="100" class="form-control input-sm aim" ng-model="newAim" required>
+																	<input name="newAim" type="number" min="1" max="100" class="form-control input-sm aim" ng-model="newAim" tooltip="Add a new Aim" required>
 																	<span class="input-group-addon aim">
                                                                         <a href="#" ng-click="addAim();newAim=''"><i class="fa fa-plus"></i></a>
                                                                     </span>
