@@ -12,6 +12,12 @@ angular.module('PassMeNot.services.share', [])
 
                 isShared: function () {
                     return !!($routeParams.subjects && $routeParams.aims);
+                },
+
+                getShared: function () {
+                    var subjects = JSON.parse(atob($routeParams.subjects));
+                    var aims = JSON.parse(atob($routeParams.aims));
+                    return {subjects: subjects, aims: aims};
                 }
             }
         }]);

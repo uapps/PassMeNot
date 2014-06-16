@@ -1,7 +1,7 @@
 angular.module('PassMeNot.controllers.main', [])
 
-  .controller('MainCtrl', ['$scope', '$routeParams', 'Store', 'Share', '$timeout', '$location',
-      function ($scope, $routeParams, Store, Share, $timeout, $location) {
+  .controller('MainCtrl', ['$scope', 'Store', 'Share', '$timeout', '$location',
+      function ($scope, Store, Share, $timeout, $location) {
 
           $scope.subjects = [ ]
           $scope.aims = [ ]
@@ -13,8 +13,9 @@ angular.module('PassMeNot.controllers.main', [])
               if ($scope.sharedGrades) {
                   $timeout(function() {
                       try {
-                          $scope.subjects = JSON.parse(atob($routeParams.subjects))
-                          $scope.aims = JSON.parse(atob($routeParams.aims))
+                          var shared = Share.getShared()
+                          $scope.subjects = shared['subjects']
+                          $scope.aims = shared['aims']
                       } catch(e) {
                           $location.path('/')
                       }
@@ -82,14 +83,14 @@ angular.module('PassMeNot.controllers.main', [])
           }
 
           $scope.$watch('subjects', function() {
-              if (!$routeParams.aims && !$routeParams.subjects) {
+              if (!$scope.sharedGrades) {
                   var subjects = angular.copy($scope.subjects)
                   Store.set('subjects', subjects)
               }
           }, true)
 
           $scope.$watch('aims', function() {
-              if (!$routeParams.aims && !$routeParams.subjects) {
+              if (!$scope.sharedGrades) {
                   var aims = angular.copy($scope.aims)
                   Store.set('aims', aims)
               }
@@ -101,6 +102,12 @@ angular.module('PassMeNot.controllers.main', [])
                       return key
               }
               return false
+          }
+
+          $scope.addFromShare = function(subject) {
+            var subjects = Store.has('subjects') ? Store.get('subjects') : []
+            subjects.push(subject)
+            Store.set('subjects', subjects)
           }
 
           $scope.initialize()
