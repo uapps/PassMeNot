@@ -52,6 +52,7 @@ angular.module('PassMeNot.controllers.main', [])
           $scope.remove = function(name){
               var pos = indexOf(name)
               if(pos) $scope.subjects.splice(pos, 1)
+              if ($scope.subjects.length == 0) $scope.toggle(0)
           }
 
           $scope.addAim = function() {
