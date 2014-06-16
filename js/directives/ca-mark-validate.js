@@ -33,6 +33,10 @@ angular.module('PassMeNot.directives.caMarkValidate', [])
 				  return value
 			  })
 
+              scope.$watch('outOfWeight', function() {
+                  if (iElement.val()) ctrl.$setValidity('maxMark', validMark(iElement.val()))
+              })
+
 		  }
 	  }
   }])
